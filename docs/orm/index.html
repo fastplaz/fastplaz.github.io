@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>ORM (Object Relationship Mapping) · FastPlaz</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="_Object Relationship Mapping_ adalah sebuah teknik yang digunakan dalam pemrograman untuk menggunakan basisdata relasional sebagai penyimpanan data dengan bentuk objek. Teknik ini biasa digunakan dalam bahasa pemrograman berorientasi objek saat harus menggunakan basisdata relasional dalam penyimpanannya."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="ORM (Object Relationship Mapping) · FastPlaz"/><meta property="og:type" content="website"/><meta property="og:url" content="https://fastplaz.github.io/"/><meta property="og:description" content="_Object Relationship Mapping_ adalah sebuah teknik yang digunakan dalam pemrograman untuk menggunakan basisdata relasional sebagai penyimpanan data dengan bentuk objek. Teknik ini biasa digunakan dalam bahasa pemrograman berorientasi objek saat harus menggunakan basisdata relasional dalam penyimpanannya."/><meta property="og:image" content="https://fastplaz.github.io/img/logo-header.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://fastplaz.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://fastplaz.github.io/blog/atom.xml" title="FastPlaz Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://fastplaz.github.io/blog/feed.xml" title="FastPlaz Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo-header.png" alt="FastPlaz"/><h2 class="headerTitleWithLogo">FastPlaz</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/introduction" target="_self">Docs</a></li><li class="siteNavGroupActive"><a href="/docs/architecture" target="_self">MVC</a></li><li class="siteNavGroupActive siteNavItemActive"><a href="/docs/orm" target="_self">ORM</a></li><li class="siteNavGroupActive"><a href="/docs/fte" target="_self">FTE</a></li><li class=""><a href="/help" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Konsep &amp; Fitur</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Pengantar</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/introduction">Ctrl+Alt+Del</a></li><li class="navListItem"><a class="navItem" href="/docs/architecture">Arsitektur (MVC)</a></li><li class="navListItem"><a class="navItem" href="/docs/installation">Instalasi</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Konsep &amp; Fitur</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/orm">ORM</a></li><li class="navListItem"><a class="navItem" href="/docs/fte">Template Engine</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Showcase</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/showcase">Showcase</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">ORM (Object Relationship Mapping)</h1></header><article><div><span><p><em>Object Relationship Mapping</em> adalah sebuah teknik yang digunakan dalam pemrograman untuk menggunakan basisdata relasional sebagai penyimpanan data dengan bentuk objek. Teknik ini biasa digunakan dalam bahasa pemrograman berorientasi objek saat harus menggunakan basisdata relasional dalam penyimpanannya.</p>
+<p>FastPlaz menyediakan <em>Simple ORM</em> untuk mengakomodir hal-hal di atas, khususnya untuk penggunaan CRUD sederhana.</p>
+<h2><a class="anchor" aria-hidden="true" id="model"></a><a href="#model" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Model</h2>
+<p>Langkah pertama dalam menghubungkan aplikasi ke database adalah dengan membuat <code>Model</code>.</p>
+<p>Dimisalkan terdapat tabel dengan nama <code>contacts</code>, maka kode sumber model fastplaz akan seperti berikut.</p>
+<pre><code class="hljs css language-pascal"> <span class="hljs-title">TContactModel</span> = <span class="hljs-keyword">class</span>(TSimpleModel)
+ <span class="hljs-keyword">private</span>
+ <span class="hljs-keyword">public</span>
+   <span class="hljs-function"><span class="hljs-keyword">constructor</span> <span class="hljs-title">Create</span><span class="hljs-params">(<span class="hljs-keyword">const</span> DefaultTableName: <span class="hljs-keyword">string</span> = <span class="hljs-string">''</span>)</span>;</span>
+ <span class="hljs-keyword">end</span>;
+
+.
+.
+.
+
+<span class="hljs-function"><span class="hljs-keyword">constructor</span> <span class="hljs-title">TContactModel</span>.<span class="hljs-title">Create</span><span class="hljs-params">(<span class="hljs-keyword">const</span> DefaultTableName: <span class="hljs-keyword">string</span> = <span class="hljs-string">''</span>)</span>;</span>
+<span class="hljs-keyword">begin</span>
+  <span class="hljs-keyword">inherited</span> Create( DefaultTableName); <span class="hljs-comment">// table name = contacts</span>
+  <span class="hljs-comment">//inherited Create('yourtablename'); // if use custom tablename</span>
+<span class="hljs-keyword">end</span>;
+
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="nama-tabel-default"></a><a href="#nama-tabel-default" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Nama Tabel Default</h3>
+<p>Pemodelan di FastPlaz menggunakan <em>Plural Methods</em>. Jadi bisa diartikan:</p>
+<ul>
+<li>TContactModel 👉 nama tabelnya:  contacts</li>
+<li>TBuildingModel 👉 nama tabelnya:  buildings</li>
+<li>TWarehouseModel 👉 nama tabelnya:  warehouses</li>
+</ul>
+<p>Lalu, kalau <code>TKaryawanModel</code> akan merefer ke tabel <code>karyawans</code>? Ya, benar. Kok lucu yaa? Jangan khawatir, sudah disediakan fitur untuk melakukan <a href="/docs/orm#penamaan-kustom">kustomisasi nama</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="primary-key-default"></a><a href="#primary-key-default" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Primary Key Default</h3>
+<p>Primary Key default mengikuti 1 huruf pertama nama tabel diikuti dengan string 'id'.</p>
+<p>Jadi jika nama modelnya adalah <code>TContactModel</code>, maka:</p>
+<ul>
+<li>Nama tabel: contacts</li>
+<li>Primary key: cid</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="penamaan-kustom"></a><a href="#penamaan-kustom" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Penamaan Kustom</h3>
+<p>Anda bisa mengubah nama default tabel dan <code>primaryKey</code> menjadi sesuati kebutuhan Anda.</p>
+<pre><code class="hljs css language-pascal"><span class="hljs-function"><span class="hljs-keyword">constructor</span> <span class="hljs-title">TKaryawanModel</span>.<span class="hljs-title">Create</span><span class="hljs-params">(<span class="hljs-keyword">const</span> DefaultTableName: <span class="hljs-keyword">string</span> = <span class="hljs-string">''</span>)</span>;</span>
+<span class="hljs-keyword">begin</span>
+  <span class="hljs-keyword">inherited</span> Create( DefaultTableName);
+  TableName := <span class="hljs-string">'karyawan'</span>; <span class="hljs-comment">// definikan nama tabel di sini</span>
+  primaryKey := <span class="hljs-string">'id'</span>;
+<span class="hljs-keyword">end</span>;
+
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="crud"></a><a href="#crud" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CRUD</h2>
+<p>Seperti umumnya dalam pembuatan aplikasi yang terhubung ke database, pasti akan menyinggung hal tentang <em>CRUD</em> <em>(Create Read Update Delete)</em>.</p>
+<h3><a class="anchor" aria-hidden="true" id="create"></a><a href="#create" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create</h3>
+<p>Jika akan membuat data baru, cukup dengan memanggil <em>procedure</em> <code>New</code>, kemudian diikuti dengan memasukkan nilai ke dalam field, dengan format:</p>
+<pre><code class="hljs css language-pascal">contact[<span class="hljs-string">'field_name'</span>] := <span class="hljs-string">'value'</span>;
+</code></pre>
+<p>Sehingga akan menjadi seperti berikut:</p>
+<pre><code class="hljs css language-pascal"><span class="hljs-comment">// create new data</span>
+
+contact := TContactModel.Create();
+contact.New;
+contact[<span class="hljs-string">'field_name'</span>] := <span class="hljs-string">'value'</span>;
+contact[<span class="hljs-string">'first_name'</span>] := <span class="hljs-string">'Luri'</span>;
+contact[<span class="hljs-string">'last_name'</span>] := <span class="hljs-string">'Luri'</span>;
+contact[<span class="hljs-string">'address'</span>] := <span class="hljs-string">'Alamat Lengkap Saya'</span>;
+contact[<span class="hljs-string">'status_id'</span>] := <span class="hljs-number">0</span>;
+<span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> contact.Save() <span class="hljs-keyword">then</span>
+<span class="hljs-keyword">begin</span>
+  <span class="hljs-comment">//</span>
+  <span class="hljs-comment">// terjadi kegagalan dalam menyimpan data</span>
+  <span class="hljs-comment">//</span>
+<span class="hljs-keyword">end</span>;
+contact.Free;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="read"></a><a href="#read" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Read</h3>
+<p>Pola membaca nilai dari suatu field bisa dilakukan dengan format berikut:</p>
+<pre><code class="hljs css language-pascal">variableName := contact[<span class="hljs-string">'field_name'</span>];
+</code></pre>
+<p>Fungsi/metode yang tersedia:</p>
+<ul>
+<li>All, mendapatkan seluruh baris data</li>
+<li>Find(...), mendapatkan data dengan kondisi tertentu</li>
+<li>FindFirst(...), mendapatkan data <em>pertama</em> dengan kondisi tertentu.</li>
+</ul>
+<pre><code class="hljs css language-pascal"><span class="hljs-comment">// mendapatkan seluruh baris data</span>
+contact := TContactModel.Create();
+<span class="hljs-keyword">if</span> contact.All <span class="hljs-keyword">then</span>
+<span class="hljs-keyword">begin</span>
+  <span class="hljs-comment">//</span>
+  <span class="hljs-comment">// data ditemukan</span>
+  <span class="hljs-comment">//</span>
+<span class="hljs-keyword">end</span>;
+</code></pre>
+<pre><code class="hljs css language-pascal"><span class="hljs-comment">// mencari data dengan field primaryKey = 2</span>
+<span class="hljs-keyword">if</span> contact.Find(<span class="hljs-number">2</span>) <span class="hljs-keyword">then</span>
+<span class="hljs-keyword">begin</span>
+
+  <span class="hljs-comment">// data ditemukan</span>
+  firstName := contact[<span class="hljs-string">'first_name'</span>];
+
+<span class="hljs-keyword">end</span>;
+</code></pre>
+<pre><code class="hljs css language-pascal"><span class="hljs-comment">// pencarian data dengan pengkodisian</span>
+<span class="hljs-keyword">var</span>
+  whereAsArray: TStringArray;
+
+.
+. 
+whereAsArray.Add(<span class="hljs-string">'first_name="luri"'</span>);
+<span class="hljs-keyword">if</span> contact.Find(whereAsArray) <span class="hljs-keyword">then</span>
+<span class="hljs-keyword">begin</span>
+  <span class="hljs-comment">//</span>
+  <span class="hljs-comment">// data ditemukan</span>
+  <span class="hljs-comment">//</span>
+<span class="hljs-keyword">end</span>;
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="join-table"></a><a href="#join-table" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Join Table</h4>
+<p>Join terhadap beberapa tabel lain pun bisa dilakukan dengan mudah. Tambahkan kode berikut sebelum perintah pencariaan.</p>
+<pre><code class="hljs css language-pascal">contact.AddJoin(<span class="hljs-string">'reference_table'</span>, <span class="hljs-string">'reference_field'</span>, <span class="hljs-string">'join_field'</span>, 
+  [<span class="hljs-string">'field_name1'</span>,<span class="hljs-string">'field_name2 alias_name'</span>]);
+</code></pre>
+<p>Contoh lengkapnya akan seperti berikut:</p>
+<pre><code class="hljs css language-pascal"><span class="hljs-comment">// condition &amp; join</span>
+
+whereAsArray.Add(<span class="hljs-string">'first_name="luri”'</span>);
+
+contact.AddJoin(<span class="hljs-string">'locations'</span>, <span class="hljs-string">'id'</span>, <span class="hljs-string">'contacts.location_id'</span>, 
+  [<span class="hljs-string">'code'</span>,<span class="hljs-string">'name country'</span>]);
+
+<span class="hljs-keyword">if</span> contact.Find(whereAsArray) <span class="hljs-keyword">then</span>
+<span class="hljs-keyword">begin</span>
+  <span class="hljs-comment">//</span>
+  <span class="hljs-comment">// data ditemukan</span>
+  <span class="hljs-comment">//</span>
+<span class="hljs-keyword">end</span>;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="update"></a><a href="#update" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Update</h3>
+<p>Cara update data hampir mirip dengan <a href="/docs/orm#create">Create</a>.
+Bisa diawali dengan pencarian data, lalu ubah data seperti contoh kode berikut:</p>
+<pre><code class="hljs css language-pascal">
+<span class="hljs-comment">// find and update</span>
+<span class="hljs-comment">// mencari data kontak dengan field primary key = 6</span>
+
+<span class="hljs-keyword">if</span> contact.Find(<span class="hljs-number">6</span>) <span class="hljs-keyword">then</span>
+<span class="hljs-keyword">begin</span>
+  s := contact[<span class="hljs-string">'first_name'</span>];
+
+  contact[<span class="hljs-string">'first_name'</span>] := <span class="hljs-string">'Budi'</span>;<span class="hljs-comment">// ubah nama menjadi "Budi"</span>
+  <span class="hljs-keyword">if</span> contact.Update() <span class="hljs-keyword">then</span>
+  <span class="hljs-keyword">begin</span>
+
+    <span class="hljs-comment">// proses update berhasil</span>
+
+  <span class="hljs-keyword">end</span>;
+
+<span class="hljs-keyword">end</span>;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="delete"></a><a href="#delete" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Delete</h3>
+<h2><a class="anchor" aria-hidden="true" id="query-builder"></a><a href="#query-builder" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Query Builder</h2>
+<p>Salah satu hal yang menyenangkan dari Simple ORM di FastPlaz ini adalah tersedianya Query Builder. Di dalam prosesnya Query Builder akan menghasilkan baris SQL (MySQL) untuk kemudian dieksekusi.</p>
+<pre><code class="hljs css language-pascal"><span class="hljs-comment">// query builder</span>
+
+contact := TContactModel.Create();
+<span class="hljs-keyword">if</span> contact.Select(<span class="hljs-string">'first_name'</span>)
+  .Where(<span class="hljs-string">'status_id=0'</span>)
+  .OrderBy(<span class="hljs-string">'first_name'</span>)
+  .Limit(<span class="hljs-number">10</span>)
+  .Open() <span class="hljs-keyword">then</span>
+<span class="hljs-keyword">begin</span>
+
+  <span class="hljs-comment">//</span>
+
+<span class="hljs-keyword">end</span>;
+</code></pre>
+<p>Di dalam prosesnya, perintah ini akan menghasilkan <em>Query SQL</em>:</p>
+<pre><code class="hljs css language-sql"><span class="hljs-keyword">SELECT</span> first_name 
+<span class="hljs-keyword">FROM</span> contacts 
+<span class="hljs-keyword">WHERE</span> status_id=<span class="hljs-number">0</span> 
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> first_name 
+<span class="hljs-keyword">LIMIT</span> <span class="hljs-number">10</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="mengolah-data"></a><a href="#mengolah-data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mengolah Data</h2>
+<p>Untuk menulis dan membaca <em>single row data</em> telah disampaikan di atas. Lalu bagaimana jika akan mengolah data yang berisi beberapa record data? Anda bisa gunakan metode perulangan yang sudah tersedia di Pascal, seperti <code>for...do</code>, <code>repeat...until</code> ataupun <code>while...do</code>.</p>
+<pre><code class="hljs css language-pascal"><span class="hljs-keyword">for</span> i := <span class="hljs-number">1</span> <span class="hljs-keyword">to</span> contact.RecordCount <span class="hljs-keyword">do</span>
+<span class="hljs-keyword">begin</span>
+  firstName := contact[<span class="hljs-string">'first_name'</span>];
+
+  <span class="hljs-comment">// your code here</span>
+
+  contact.Next;
+<span class="hljs-keyword">end</span>;
+</code></pre>
+<pre><code class="hljs css language-pascal"><span class="hljs-keyword">repeat</span>
+  firstName := contact[<span class="hljs-string">'first_name'</span>];
+
+  <span class="hljs-comment">// your code here</span>
+
+  contact.Next;
+<span class="hljs-keyword">until</span> warehouses.EOF;
+</code></pre>
+<pre><code class="hljs css language-pascal"><span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> contact.EOF <span class="hljs-keyword">do</span>
+<span class="hljs-keyword">begin</span>
+  firstName := contact[<span class="hljs-string">'first_name'</span>];
+
+  <span class="hljs-comment">// your code here</span>
+
+  contact.Next;
+<span class="hljs-keyword">end</span>;
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="menampilkan-data"></a><a href="#menampilkan-data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Menampilkan Data</h2>
+<p>Pada dasarnya proses <a href="/docs/orm#mengolah-data">Pengolahan Data</a> tidak selalu diperlukan jika hanya sekedar untuk menampikan data tersebut ke user. Dengan menggunakan <a href="/docs/fte">FTE/FastPlaz Template Engine</a>, hal tersebut cukup dilakukan dengan mendefinisikan variabel data yang akan dikirim ke <code>view</code>.</p>
+<p>Contoh kasus, jika ada suatu aplikasi yang hendak menampilkan isi tabel <code>warehouses</code>, maka yang semestinya dilakukan:</p>
+<h3><a class="anchor" aria-hidden="true" id="membuat-kode-pascal-untuk-akses-ke-model-warehouse"></a><a href="#membuat-kode-pascal-untuk-akses-ke-model-warehouse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Membuat kode pascal untuk akses ke model warehouse</h3>
+<pre><code class="hljs css language-pascal"><span class="hljs-comment">// kode di warehouse controller</span>
+<span class="hljs-comment">// di prosedur Create telah didefiniskan baris berikut</span>
+<span class="hljs-comment">//   warehouses := TWarehouseModel.Create();  </span>
+
+<span class="hljs-function"><span class="hljs-keyword">procedure</span> <span class="hljs-title">TWarehouseController</span>.<span class="hljs-title">Get</span>;</span>
+<span class="hljs-keyword">var</span>
+  whereAsArray: TStringArray;
+<span class="hljs-keyword">begin</span>
+  DataBaseInit();
+
+  warehouses.AddJoin(<span class="hljs-string">'locations'</span>, <span class="hljs-string">'id'</span>, 
+    <span class="hljs-string">'warehouses.location_id'</span>, 
+    [<span class="hljs-string">'code'</span>,<span class="hljs-string">'name country'</span>]);
+  <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> warehouses.Find(whereAsArray) <span class="hljs-keyword">then</span>
+  <span class="hljs-keyword">begin</span>
+    <span class="hljs-comment">//</span>
+  <span class="hljs-keyword">end</span>;
+
+  <span class="hljs-comment">// Assign data warehouses ke variable $Warehouses</span>
+  <span class="hljs-comment">//   untuk dipakai di view</span>
+  ThemeUtil.AssignVar[<span class="hljs-string">'$Warehouses'</span>] := @warehouses.Data;
+
+  Tags[<span class="hljs-string">'maincontent'</span>] := @Tag_MainContent_Handler; <span class="hljs-comment">//&lt;&lt;-- tag maincontent handler</span>
+  ThemeUtil.Assign(<span class="hljs-string">'$Title'</span>, <span class="hljs-string">'DB Model'</span>);
+  ThemeUtil.Layout := <span class="hljs-string">'master'</span>; <span class="hljs-comment">// custom layout: master.html</span>
+  Response.Content := ThemeUtil.Render();
+<span class="hljs-keyword">end</span>;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="kode-html-di-view"></a><a href="#kode-html-di-view" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kode HTML di view</h3>
+<p>Dan kode HTML di bagian view cukup seperti berikut:</p>
+<pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span><span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Code<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Country<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+        [foreach from=$Warehouses item=aItem type=table]
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>[$index].<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>[aItem.code]<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>[aItem.name]<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>[aItem.country]<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        [/foreach from=$Warehouses]
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</code></pre>
+<p>Dan hasilnya kurang lebih akan seperti ini
+<img src="/img/fastplaz/orm-result.png" alt="ORM View"></p>
+<p>Contoh ini adalah contoh yang sederhana hanya dengan menggunakan &quot;&lt;table&gt;..&lt;/table&gt;&quot; saja. Untuk penggunaan yang lebih menarik bisa memanfaatkan Ajax dengan menggunakan pustaka JS/CSS yang sudah ada.</p>
+<p>Contoh yang lebih komplek bisa dipelajari di kode sumber di repositori <a href="https://github.com/pascal-id/database-with-fastplaz">Database-Example</a>.</p>
+<p>Lebih dalam tentang penggunaan <em>templating</em> ini bisa dipelajari di bagian <a href="/docs/fte">FastPlaz Templating Engine</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="ilustrasi"></a><a href="#ilustrasi" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ilustrasi</h3>
+<p><img src="/img/fastplaz/orm-ilustrasi.png" alt="ORM View"></p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/installation"><span class="arrow-prev">← </span><span>Instalasi</span></a><a class="docs-next button" href="/docs/fte"><span>Template Engine</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#model">Model</a><ul class="toc-headings"><li><a href="#nama-tabel-default">Nama Tabel Default</a></li><li><a href="#primary-key-default">Primary Key Default</a></li><li><a href="#penamaan-kustom">Penamaan Kustom</a></li></ul></li><li><a href="#crud">CRUD</a><ul class="toc-headings"><li><a href="#create">Create</a></li><li><a href="#read">Read</a></li><li><a href="#update">Update</a></li><li><a href="#delete">Delete</a></li></ul></li><li><a href="#query-builder">Query Builder</a></li><li><a href="#mengolah-data">Mengolah Data</a></li><li><a href="#menampilkan-data">Menampilkan Data</a><ul class="toc-headings"><li><a href="#membuat-kode-pascal-untuk-akses-ke-model-warehouse">Membuat kode pascal untuk akses ke model warehouse</a></li><li><a href="#kode-html-di-view">Kode HTML di view</a></li><li><a href="#ilustrasi">Ilustrasi</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo-header.png" alt="FastPlaz" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/introduction">Getting Started</a><a href="/docs/fte">FastPlaz Theme Engine</a><a href="/help">Contribution</a></div><div><h5>Community</h5><a href="/docs/showcase">User Showcase</a><a href="https://pascal-id.org" target="_blank" rel="noreferrer noopener">Pascal Indonesia</a><a href="https://t.me/pascalid">Pascal Indonesia on Telegram</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/fastplaz">GitHub</a><a class="github-button" href="https://github.com/fastplaz/fastplaz" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://fastplaz.com" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-header.png" alt="FastPlaz Web Framework" width="170"/></a><section class="copyright">Copyright © 2020 FastPlaz - Built with Docusaurus</section></footer></div></body></html>
