@@ -44,9 +44,30 @@ Pemilihan theme default yang digunakan bisa dilakukan melalui file konfigurasi d
 }
 ```
 
+Contoh layout `master` HTML di dalam theme `Basic`.
+```html
+<!DOCTYPE html>
+<html>
+[include file="includes/head"]
+<body id="page-top">
+    [include file="includes/navigation"]
+    <div id="main">
+        <div class="container">
+            <h3>[$Title filter=ucwords]</h3>
+        </div>
+        [maincontent]
+    </div>
+    [include file="includes/footer"]
+</body>
+</html>
+```
+
+Terlihat sangat sederhana dengan menggunakan `Tagging`.
+Detilnya bisa Anda pelajari dari contoh file yang tersedia di [repository](https://github.com/fastplaz/fastplaz/tree/master/tools/templates/packages/Simple/public_html/themes/Basic).
+
 ## Tag
 
-**FTE** mempunyai kemampuan untuk mengolah HTML dengan memanfaatkan _tagging_.
+**FTE** mempunyai kemampuan untuk mengolah HTML dengan memanfaatkan kode `Tag` tertentu.
 
 ### Tag Konstruksi
 
