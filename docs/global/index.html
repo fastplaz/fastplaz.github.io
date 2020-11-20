@@ -1,0 +1,216 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Variabel Global · FastPlaz</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="_FastPlaz_ telah menyediakan beberapa _variabel global_ dan fungsi/procedur yang siap digunakan."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Variabel Global · FastPlaz"/><meta property="og:type" content="website"/><meta property="og:url" content="https://fastplaz.github.io/"/><meta property="og:description" content="_FastPlaz_ telah menyediakan beberapa _variabel global_ dan fungsi/procedur yang siap digunakan."/><meta property="og:image" content="https://fastplaz.github.io/img/logo-header.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://fastplaz.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://fastplaz.github.io/blog/atom.xml" title="FastPlaz Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://fastplaz.github.io/blog/feed.xml" title="FastPlaz Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo-header.png" alt="FastPlaz"/><h2 class="headerTitleWithLogo">FastPlaz</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/introduction" target="_self">Docs</a></li><li class="siteNavGroupActive"><a href="/docs/architecture" target="_self">MVC</a></li><li class="siteNavGroupActive"><a href="/docs/orm" target="_self">ORM</a></li><li class="siteNavGroupActive"><a href="/docs/fte" target="_self">FTE</a></li><li class=""><a href="/help" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Konsep &amp; Fitur</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Pengantar</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/introduction">Ctrl+Alt+Del</a></li><li class="navListItem"><a class="navItem" href="/docs/architecture">Arsitektur (MVC)</a></li><li class="navListItem"><a class="navItem" href="/docs/installation">Instalasi</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Konsep &amp; Fitur</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/orm">ORM</a></li><li class="navListItem"><a class="navItem" href="/docs/fte">Template Engine</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/global">Variabel Global</a></li><li class="navListItem"><a class="navItem" href="/docs/helper">Helper</a></li><li class="navListItem"><a class="navItem" href="/docs/method">Method</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Showcase</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/showcase">Showcase</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Variabel Global</h1></header><article><div><span><p><em>FastPlaz</em> telah menyediakan beberapa <em>variabel global</em> dan fungsi/procedur yang siap digunakan.</p>
+<h2><a class="anchor" aria-hidden="true" id="_get"></a><a href="#_get" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>_GET</h2>
+<p><strong>_GET</strong> adalah assosiative array yang berguna untuk mendapatkan nilai dari suatu <em>query string</em>.</p>
+<p>Jika terdapat url <code>http://yourdomain.tld/?id=2020</code>, maka untuk mendapatkan nilai dari variable <code>id</code> bisa dilakukan dengan cara berikut ini.</p>
+<pre><code class="hljs css language-pascal"><span class="hljs-function"><span class="hljs-keyword">procedure</span> <span class="hljs-title">TSomeController</span>.<span class="hljs-title">Get</span>;</span>
+<span class="hljs-keyword">var</span>
+  id: <span class="hljs-keyword">string</span>;
+<span class="hljs-keyword">begin</span>
+  id := _GET[<span class="hljs-string">'id'</span>];
+
+  <span class="hljs-comment">// your code here</span>
+
+<span class="hljs-keyword">end</span>;
+</code></pre>
+<p>Demikian juga halnya untuk variable query string lainnya,.</p>
+<h2><a class="anchor" aria-hidden="true" id="_post"></a><a href="#_post" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>_POST</h2>
+<p><strong>_POST</strong> adalah assosiative array yang berguna untuk mendapatkan nilai dari suatu variable pada proses dengan <em>method POST</em>.</p>
+<p>Sama seperti halnya <code>_GET</code>, hanya saja hal ini digunakan ketika terjadi method post, biasanya untuk pengisian suatu form, atau API yang menggunakan method post.</p>
+<p>Misal dengan Form HTML berikut:</p>
+<pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">"multipart/form-data"</span>&gt;</span>
+  Name: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"firstName"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"firstName"</span> &gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<p>Maka kode Pascal untuk mendapatkan masukan tersebut adalah seperti berikut:</p>
+<pre><code class="hljs css language-pascal"><span class="hljs-function"><span class="hljs-keyword">procedure</span> <span class="hljs-title">TSomeController</span>.<span class="hljs-title">Post</span>;</span>
+<span class="hljs-keyword">var</span>
+  firstName: <span class="hljs-keyword">string</span>;
+<span class="hljs-keyword">begin</span>
+  firstName := _POST[<span class="hljs-string">'firstName'</span>];
+
+  <span class="hljs-comment">// your code here</span>
+
+<span class="hljs-keyword">end</span>;
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="_session"></a><a href="#_session" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>_SESSION</h2>
+<p><em>Session</em> merupakan data yang disimpan dalam suatu server yang dapat digunakan secara global di server tersebut, dimana data tersebut spesifik merujuk ke user/client tertentu, contoh penggunaan session adalah ketika user telah login di halaman tertentu.</p>
+<p>Session adalah mekanisme untuk mempertahankan informasi di semua halaman web yang berbeda untuk mengidentifikasi pengguna saat mereka menelusuri situs atau aplikasi.</p>
+<p>Cara membaca dan menulis session bisa dilakukan melalui variabel <code>_SESSION</code>.</p>
+<pre><code class="hljs css language-pascal"><span class="hljs-comment">// membaca session</span>
+last_login = _SESSION[<span class="hljs-string">'last_login'</span>];
+
+<span class="hljs-comment">// menulis session</span>
+_SESSION[<span class="hljs-string">'variable'</span>] := <span class="hljs-string">'value'</span>;
+_SESSION[<span class="hljs-string">'token_expired'</span>] := now.IncHour(<span class="hljs-number">24</span>*<span class="hljs-number">7</span>).AsString;
+_SESSION[<span class="hljs-string">'token_expired_timestamp'</span>] := now.IncHour(<span class="hljs-number">24</span>*<span class="hljs-number">7</span>).AsUnixTime();
+</code></pre>
+<p>Jika suatu kali anda perlu untuk menghapus isi session, misal pada saat user logout, bisa dilakukan dengan memanggil prosedur <code>clear</code>.</p>
+<pre><code class="hljs css language-pascal">Session.Clear
+</code></pre>
+<p>Sedangkan untuk mendapatnya <code>Session ID</code> tersedia di variabel <code>SessionID</code>, bisa langsung dengan:</p>
+<pre><code class="hljs css language-pascal">varId := SessionID;
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="environment"></a><a href="#environment" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Environment</h2>
+<p>Bermanfaat jika anda ingin membaca nilai dari suatu <code>Environment</code> server, misal:</p>
+<ul>
+<li>HTTP_USER_AGENT</li>
+<li>HTTP_REFERER</li>
+<li>SERVER_NAME</li>
+</ul>
+<p>Cara penggunaanya seperti membaca variabel lain seperti biasa.</p>
+<pre><code class="hljs css language-pascal">httpUserAgent := Environment[<span class="hljs-string">'HTTP_USER_AGENT'</span>];
+</code></pre>
+<p>Kemungkinan akan mendapatkan hasil seperti ini:
+<code>Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:82.0) Gecko/20100101 Firefox/82.0</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="header"></a><a href="#header" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Header</h2>
+<p>Mendapatkan informasi header yang dikirimkan oleh user, biasanya digunakan oleh suatu API untuk mendapatkan token autentikasi.</p>
+<pre><code class="hljs css language-pascal">token := Header[<span class="hljs-string">'Token'</span>];
+clientSecret := Header[<span class="hljs-string">'ClientSecret'</span>];
+</code></pre>
+<p>Di http server Apache, Anda perlu melakukan seting tertentu di file <code>.htaccess</code> agar bisa membaca header ini.</p>
+<pre><code class="hljs css language-bash">SetEnvIf Token <span class="hljs-string">"(.*)"</span> Token=<span class="hljs-variable">$1</span>
+SetEnvIf ClientSecret <span class="hljs-string">"(.*)"</span> ClientSecret=<span class="hljs-variable">$1</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="customheader"></a><a href="#customheader" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CustomHeader</h2>
+<p>Suatu kali Anda memerlukan untuk mengirim informasi header tertentu ke suatu keluaran API, maka fungsi ini bisa digunakan.</p>
+<pre><code class="hljs css language-pascal">CustomHeader[<span class="hljs-string">'refresh_token'</span>] := <span class="hljs-string">'sdc212sa12ce-90382j12'</span>;
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="baseurl"></a><a href="#baseurl" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BaseURL</h2>
+<p>Mendapatkan BaseURL dari suatu aplikasi seperti yang tersimpan di <code>config.json</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="config"></a><a href="#config" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Config</h2>
+<p>Membaca nilai konfigurasi yang terletak di file <code>config.json</code>.</p>
+<p>Misal jika anda ingin mendapatkan username database</p>
+<pre><code class="hljs css language-json">  "database" : {
+    "default" : {
+      "driver" : "MySQL 5.7",
+      "hostname" : "localhost",
+      "port" : "",
+      "username" : "your_username",
+      "password" : "your_password",
+      "database_name" : "the_database_name",
+      "charset" : "",
+      "prefix" : "",
+      "library" : ""
+    }
+  },
+</code></pre>
+<p>Maka kode pascal-nya akan seperti ini</p>
+<pre><code class="hljs css language-pascal">userName := Config[<span class="hljs-string">'database/default/username'</span>];
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="uri"></a><a href="#uri" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>URI</h2>
+<p>Mendapatkan URI aktif saat ini.</p>
+<h2><a class="anchor" aria-hidden="true" id="featured-object"></a><a href="#featured-object" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Featured Object</h2>
+<h3><a class="anchor" aria-hidden="true" id="logutil"></a><a href="#logutil" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>LogUtil</h3>
+<p>Sangat perlu untuk debuging. Tools ini menyimpan text debug ke dalam file log di folder <code>public_html/ztemp/logs/*.log</code>.
+Dependensi file unit: <code>logutil_lib.pas</code>.
+Format penggunaan:</p>
+<pre><code class="hljs css language-pascal">LogUtil.Add(<span class="hljs-string">'Message Anda'</span>, <span class="hljs-string">'Kategori(optional)'</span>);
+</code></pre>
+<p>Contoh penggunaan:</p>
+<pre><code class="hljs css language-pascal"><span class="hljs-keyword">uses</span> logutil_lib, ...;
+
+.
+.
+
+LogUtil.Add(<span class="hljs-string">'Gagal menyimpan data ke database'</span>);
+LogUtil.Add(<span class="hljs-string">'Log baris berikutnya'</span>, <span class="hljs-string">'TEST'</span>);
+</code></pre>
+<p>Maka  di dalam file *log akan muncul</p>
+<pre><code class="hljs css language-bash">2020-11-21 01:34:26 | Gagal menyimpan data ke database
+2020-11-21 01:34:26 | TEST: Log baris berikutnya
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="tjsonutil"></a><a href="#tjsonutil" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TJSONUtil</h3>
+<p>TJSONUtil ini sangat memudahkan dalam mengelola data dengan format json.</p>
+<pre><code class="hljs css language-pascal"><span class="hljs-keyword">var</span>
+  s: <span class="hljs-keyword">string</span>;
+  json: TJSONUtil;
+
+.
+.  
+json := TJSONUtil.Create;
+json[<span class="hljs-string">'code'</span>] := Int64(<span class="hljs-number">0</span>);
+json[<span class="hljs-string">'email'</span>] := email;
+json[<span class="hljs-string">'first_name'</span>] := <span class="hljs-string">'Luri'</span>;
+json[<span class="hljs-string">'last_name'</span>] := <span class="hljs-string">'Darmawan'</span>;
+json[<span class="hljs-string">'address/city'</span>] := <span class="hljs-string">'Semarang'</span>;
+json[<span class="hljs-string">'address/provincy'</span>] := <span class="hljs-string">'Jawa Tengah'</span>;
+
+s := json.AsJson;
+</code></pre>
+<p>Akan isi variabel <code>s</code> akan berisi string dalam format json.</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"code"</span> : <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"email"</span> : <span class="hljs-string">"email@email.com"</span>,
+  <span class="hljs-attr">"first_name"</span> : <span class="hljs-string">"Luri"</span>,
+  <span class="hljs-attr">"last_name"</span> : <span class="hljs-string">"Darmawan"</span>,
+  <span class="hljs-attr">"address"</span> : {
+    <span class="hljs-attr">"city"</span> : <span class="hljs-string">"Semarang"</span>,
+    <span class="hljs-attr">"provincy"</span> : <span class="hljs-string">"Jawa Tengah"</span>
+  }
+}
+</code></pre>
+<p>Sedangkan jika Anda ini membaca suatu string json menjadi object, maka</p>
+<pre><code class="hljs css language-pascal">json.LoadFromJsonString(varJsonString);
+firstName := json[<span class="hljs-string">'first_name'</span>];
+city := json[<span class="hljs-string">'address/city'</span>];
+provincy := json[<span class="hljs-string">'address/provincy'</span>];
+</code></pre>
+<hr>
+<p>//TODO: Function List</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/fte"><span class="arrow-prev">← </span><span>Template Engine</span></a><a class="docs-next button" href="/docs/helper"><span>Helper</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#_get">_GET</a></li><li><a href="#_post">_POST</a></li><li><a href="#_session">_SESSION</a></li><li><a href="#environment">Environment</a></li><li><a href="#header">Header</a></li><li><a href="#customheader">CustomHeader</a></li><li><a href="#baseurl">BaseURL</a></li><li><a href="#config">Config</a></li><li><a href="#uri">URI</a></li><li><a href="#featured-object">Featured Object</a><ul class="toc-headings"><li><a href="#logutil">LogUtil</a></li><li><a href="#tjsonutil">TJSONUtil</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo-header.png" alt="FastPlaz" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/introduction">Getting Started</a><a href="/docs/fte">FastPlaz Theme Engine</a><a href="/help">Contribution</a></div><div><h5>Community</h5><a href="/docs/showcase">User Showcase</a><a href="https://pascal-id.org" target="_blank" rel="noreferrer noopener">Pascal Indonesia</a><a href="https://t.me/pascalid">Pascal Indonesia on Telegram</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/fastplaz">GitHub</a><a class="github-button" href="https://github.com/fastplaz/fastplaz" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://fastplaz.com" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-header.png" alt="FastPlaz Web Framework" width="170"/></a><section class="copyright">Copyright © 2020 FastPlaz - Built with Docusaurus</section></footer></div></body></html>

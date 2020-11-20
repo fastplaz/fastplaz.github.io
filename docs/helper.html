@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Helper · FastPlaz</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Disebutkan dalam artikel mengenai _Object Pascal_, bahwa "/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Helper · FastPlaz"/><meta property="og:type" content="website"/><meta property="og:url" content="https://fastplaz.github.io/"/><meta property="og:description" content="Disebutkan dalam artikel mengenai _Object Pascal_, bahwa "/><meta property="og:image" content="https://fastplaz.github.io/img/logo-header.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://fastplaz.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://fastplaz.github.io/blog/atom.xml" title="FastPlaz Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://fastplaz.github.io/blog/feed.xml" title="FastPlaz Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo-header.png" alt="FastPlaz"/><h2 class="headerTitleWithLogo">FastPlaz</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/introduction" target="_self">Docs</a></li><li class="siteNavGroupActive"><a href="/docs/architecture" target="_self">MVC</a></li><li class="siteNavGroupActive"><a href="/docs/orm" target="_self">ORM</a></li><li class="siteNavGroupActive"><a href="/docs/fte" target="_self">FTE</a></li><li class=""><a href="/help" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Konsep &amp; Fitur</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Pengantar</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/introduction">Ctrl+Alt+Del</a></li><li class="navListItem"><a class="navItem" href="/docs/architecture">Arsitektur (MVC)</a></li><li class="navListItem"><a class="navItem" href="/docs/installation">Instalasi</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Konsep &amp; Fitur</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/orm">ORM</a></li><li class="navListItem"><a class="navItem" href="/docs/fte">Template Engine</a></li><li class="navListItem"><a class="navItem" href="/docs/global">Variabel Global</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/helper">Helper</a></li><li class="navListItem"><a class="navItem" href="/docs/method">Method</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Showcase</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/showcase">Showcase</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Helper</h1></header><article><div><span><p>Disebutkan dalam artikel mengenai <em>Object Pascal</em>, bahwa</p>
+<blockquote>
+<p>Helpers are a way to extend a class without using inheritance, which is also useful for records that do not allow inheritance at all.</p>
+</blockquote>
+<p><em>FastPlaz</em> telah menyediakan beberapa <em>helper</em> yang akan memudahkan Anda dalam membuat program dengan Pascal. Dengan menggunakan helper akan membuat kode Anda akan mudah dibaca, bahkan menyerupai bahasa manusia sehari-hari.</p>
+<table>
+<thead>
+<tr><th>Unit</th><th>Deskripsi</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="#string_helper">string_helper</a></td><td>Helper terhadap tipe data AnsiString/String</td></tr>
+<tr><td><a href="#datetime_helper">datetime_helper</a></td><td>Helper terhadap tipe data TDateTime</td></tr>
+<tr><td><a href="#integer_helper">integer_helper</a></td><td>Helper terhadap tipe data Integer</td></tr>
+<tr><td><a href="#array_helper">array_helper</a></td><td>Helper terhadap tipe data TStringArray</td></tr>
+<tr><td><a href="#verbal-expression">verbal_expressions_lib</a></td><td>Verbal Expression</td></tr>
+</tbody>
+</table>
+<p>Sebagian fungsi di dalam <code>helper</code> ini sudah terakomdir di dalam fpc 3.2.0.</p>
+<h2><a class="anchor" aria-hidden="true" id="string_helper"></a><a href="#string_helper" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>string_helper</h2>
+<p>Jika terdapat variabel ini:</p>
+<pre><code class="hljs css language-pascal">d : TDateTime;
+s : <span class="hljs-keyword">String</span>;
+i : integer;
+</code></pre>
+<p>Banyak hal yang bisa dilakukan dari helper ini.</p>
+<pre><code class="hljs css language-pascal">d := s.AsDateTime; <span class="hljs-comment">//konversi dari date string ke datetime</span>
+i := s.AsInteger; <span class="hljs-comment">//konversi dari string ke integer</span>
+
+<span class="hljs-comment">// jika s mengandung kata 'cari'</span>
+<span class="hljs-keyword">if</span> s.Has(<span class="hljs-string">'cari'</span>) <span class="hljs-keyword">then</span> <span class="hljs-keyword">begin</span> ... <span class="hljs-keyword">end</span>;
+
+<span class="hljs-comment">// jika s adalah url/emal</span>
+<span class="hljs-keyword">if</span> s.IsEmail <span class="hljs-keyword">then</span> ...
+<span class="hljs-keyword">if</span> s.IsURL <span class="hljs-keyword">then</span> ...
+
+s := s.UrlEncode;
+s := s.Encode64;
+s := s.Decode64;
+
+s := <span class="hljs-string">'saya makan nasi'</span>;
+s := s.cut(<span class="hljs-string">'saya'</span>,<span class="hljs-string">'nasi'</span>).trim;
+<span class="hljs-comment">// s berisi 'makan'</span>
+
+s.SaveToFile(<span class="hljs-string">'/path/filename'</span>);
+</code></pre>
+<p>Sebagian contoh juga terdapat di <a href="https://github.com/fastplaz/fastplaz/blob/master/docs/string-helper.md">dokumen</a> repositori.</p>
+<p>Untuk daftar lebih lengkap bisa dilihat dari file unit <a href="https://github.com/fastplaz/fastplaz/blob/master/FastPlaz/src/helper/string_helpers.pas"><code>string_helper</code></a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="datetime_helper"></a><a href="#datetime_helper" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>datetime_helper</h2>
+<p>Jika terdapat variabel ini:</p>
+<pre><code class="hljs css language-pascal">d : TDateTime;
+s : <span class="hljs-keyword">String</span>;
+</code></pre>
+<p>Banyak hal yang bisa dilakukan dari helper ini.</p>
+<pre><code class="hljs css language-pascal">d := d.FromString( <span class="hljs-string">'17-08-1945 09:59:00'</span>);
+s := d.Format( <span class="hljs-string">'yyyy-mm-dd HH:nn:ss'</span>);
+s := d.AsString;
+
+<span class="hljs-keyword">if</span> d.IsAM <span class="hljs-keyword">then</span> <span class="hljs-keyword">begin</span> ... <span class="hljs-keyword">end</span>;
+<span class="hljs-keyword">if</span> d.IsPM <span class="hljs-keyword">then</span> <span class="hljs-keyword">begin</span> ... <span class="hljs-keyword">end</span>;
+<span class="hljs-keyword">if</span> d.IsToday <span class="hljs-keyword">then</span> <span class="hljs-keyword">begin</span> ... <span class="hljs-keyword">end</span>;
+
+<span class="hljs-keyword">if</span> Tomorrow.IsSaturday <span class="hljs-keyword">then</span> <span class="hljs-keyword">begin</span> ... <span class="hljs-keyword">end</span>;
+<span class="hljs-keyword">if</span> d.HourOf = <span class="hljs-number">9</span> <span class="hljs-keyword">then</span> ....
+
+d := d.IncMinute(<span class="hljs-number">1</span>);
+
+<span class="hljs-keyword">if</span> d.YearsDiff( Now) &gt; <span class="hljs-number">40</span> <span class="hljs-keyword">then</span> <span class="hljs-keyword">begin</span> ... <span class="hljs-keyword">end</span>;
+
+s := d.HumanReadable;
+<span class="hljs-comment">// 'more than 73 years ago'</span>
+
+<span class="hljs-comment">// konversi tanggal menjadi unixtime</span>
+i := d.AsUnixTime;
+</code></pre>
+<p>Sebagian contoh juga terdapat di <a href="https://github.com/fastplaz/fastplaz/blob/master/docs/datetime-helper.md">dokumen</a> repositori.</p>
+<p>Untuk daftar lebih lengkap bisa dilihat dari file unit <a href="https://github.com/fastplaz/fastplaz/blob/master/FastPlaz/src/helper/datetime_helpers.pas"><code>datetime_helper</code></a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="integer_helper"></a><a href="#integer_helper" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>integer_helper</h2>
+<pre><code class="hljs css language-pascal"><span class="hljs-keyword">var</span>
+  i: integer;
+
+<span class="hljs-comment">// jika nilai i antara 300 dan 400</span>
+<span class="hljs-keyword">if</span> i.InRange( <span class="hljs-number">300</span>, <span class="hljs-number">400</span>) <span class="hljs-keyword">then</span> ...
+
+<span class="hljs-comment">// konversi dari unixtime ke tdatetime</span>
+d := i.AsDateTime;
+</code></pre>
+<p>Untuk daftar lebih lengkap bisa dilihat dari file unit <a href="https://github.com/fastplaz/fastplaz/blob/master/FastPlaz/src/helper/integer_helpers.pas"><code>integer_helper</code></a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="array_helper"></a><a href="#array_helper" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>array_helper</h2>
+<pre><code class="hljs css language-pascal"><span class="hljs-comment">// cek apakah string 'zero' ada di dalam array</span>
+<span class="hljs-keyword">const</span>
+  NUMBER_LIST: <span class="hljs-keyword">array</span>[<span class="hljs-number">0</span>..<span class="hljs-number">5</span>] <span class="hljs-keyword">of</span> <span class="hljs-keyword">string</span> = (<span class="hljs-string">'zero'</span>, <span class="hljs-string">'one'</span>, <span class="hljs-string">'two'</span>, <span class="hljs-string">'three'</span>, <span class="hljs-string">'four'</span>, <span class="hljs-string">'five'</span>);
+<span class="hljs-keyword">var</span>
+  i: integer;
+  whereAsArray: TStringArray;
+
+.
+.
+<span class="hljs-keyword">if</span> <span class="hljs-string">'zero'</span> <span class="hljs-keyword">in</span> NUMBER_LIST <span class="hljs-keyword">then</span>
+<span class="hljs-keyword">begin</span>
+  <span class="hljs-comment">//</span>
+<span class="hljs-keyword">end</span>;
+
+<span class="hljs-comment">// menambahkan suatu string ke dalam array of string</span>
+whereAsArray.Add(<span class="hljs-string">'isi string'</span>);
+
+<span class="hljs-comment">// mendapatkan panjang/jumlah item di dalam array</span>
+i := whereAsArray.Count;
+</code></pre>
+<p>Untuk daftar lebih lengkap bisa dilihat dari file unit <a href="https://github.com/fastplaz/fastplaz/blob/master/FastPlaz/src/helper/array_helpers.pas"><code>array_helpers</code></a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="verbal-expression"></a><a href="#verbal-expression" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Verbal Expression</h2>
+<p>Verbal Expression ini adalah library FastPlaz yang membantu dalam mengkonstruksi <em>regular expressions</em> yang berat.</p>
+<pre><code class="hljs css language-pascal">VE := TVerbalExpressions.Create;
+VE.StartOfLine()
+  .Has(<span class="hljs-string">'http'</span>)
+  .Maybe(<span class="hljs-string">'s'</span>)
+  .Has(<span class="hljs-string">'://'</span>)
+  .Maybe(<span class="hljs-string">'www.'</span>)
+  .AnythingBut(<span class="hljs-string">' '</span>)
+  .EndOfLine(false);
+
+<span class="hljs-keyword">if</span> VE.IsMatch(<span class="hljs-string">'https://fastplaz.com'</span>) <span class="hljs-keyword">then</span>
+<span class="hljs-keyword">begin</span>
+  <span class="hljs-comment">// your code</span>
+<span class="hljs-keyword">end</span>;
+
+
+<span class="hljs-comment">// expression: ^(http)(s)?(:\/\/)(www\.)?([^ ]*)</span>
+</code></pre>
+<p>Kode ini akan menghasilkan regex: <code>^(http)(s)?(:\/\/)(www\.)?([^ ]*)</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="replace-string"></a><a href="#replace-string" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Replace String</h3>
+<pre><code class="hljs">varString := <span class="hljs-string">'Replace bird with a duck'</span>;
+VE.Find(<span class="hljs-string">'bird'</span>);
+varString := VE.Replace(varString, <span class="hljs-string">'duck'</span>);
+</code></pre>
+<p>or</p>
+<pre><code class="hljs">varString := VE.<span class="hljs-builtin-name">Find</span>(<span class="hljs-string">'red'</span>).Replace(<span class="hljs-string">'We have a red house'</span>, <span class="hljs-string">'blue'</span>);
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="methods-list"></a><a href="#methods-list" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Methods list</h3>
+<table>
+<thead>
+<tr><th style="text-align:left">Name</th><th style="text-align:left">Description</th><th style="text-align:left">Usage</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Add</td><td style="text-align:left">add values to the expression</td><td style="text-align:left">Add('abc')</td></tr>
+<tr><td style="text-align:left">startOfLine</td><td style="text-align:left">mark expression with ^</td><td style="text-align:left">startOfLine(false)</td></tr>
+<tr><td style="text-align:left">endoOfLine</td><td style="text-align:left">mark the expression with $</td><td style="text-align:left">endOfLine()</td></tr>
+<tr><td style="text-align:left">has</td><td style="text-align:left">add a string to the expression</td><td style="text-align:left">has('foo')</td></tr>
+<tr><td style="text-align:left">find</td><td style="text-align:left">alias for has</td><td style="text-align:left">find('foo')</td></tr>
+<tr><td style="text-align:left">maybe</td><td style="text-align:left">define a string that might appear once or not</td><td style="text-align:left">maybe('.com')</td></tr>
+<tr><td style="text-align:left">anything</td><td style="text-align:left">accept any string</td><td style="text-align:left">anything()</td></tr>
+<tr><td style="text-align:left">anythingBut</td><td style="text-align:left">accept any string but the specified char</td><td style="text-align:left">anythingBut(',')</td></tr>
+<tr><td style="text-align:left">something</td><td style="text-align:left">accept any non-empty string</td><td style="text-align:left">something()</td></tr>
+<tr><td style="text-align:left">somethingBut</td><td style="text-align:left">anything non-empty except for these chars</td><td style="text-align:left">somethingBut('a')</td></tr>
+<tr><td style="text-align:left">LineBreak</td><td style="text-align:left">match \r \n</td><td style="text-align:left">lineBreak()</td></tr>
+<tr><td style="text-align:left">br</td><td style="text-align:left">shorthand for lineBreak</td><td style="text-align:left">br()</td></tr>
+<tr><td style="text-align:left">tab</td><td style="text-align:left">match tabs \t</td><td style="text-align:left">tab()</td></tr>
+<tr><td style="text-align:left">word</td><td style="text-align:left">match \w+</td><td style="text-align:left">word()</td></tr>
+<tr><td style="text-align:left">anyOf</td><td style="text-align:left">any of the listed chars</td><td style="text-align:left">anyOf('abc')</td></tr>
+<tr><td style="text-align:left">any</td><td style="text-align:left">shorthand for anyOf</td><td style="text-align:left">any('abc')</td></tr>
+<tr><td style="text-align:left">range</td><td style="text-align:left">adds a range to the expression</td><td style="text-align:left">range(a,z,0,9)</td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="note"></a><a href="#note" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Note</h4>
+<p>Inspiration from <a href="http://verbalexpressions.github.io/">VerbalExpressions</a></p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/global"><span class="arrow-prev">← </span><span>Variabel Global</span></a><a class="docs-next button" href="/docs/method"><span>Method</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#string_helper">string_helper</a></li><li><a href="#datetime_helper">datetime_helper</a></li><li><a href="#integer_helper">integer_helper</a></li><li><a href="#array_helper">array_helper</a></li><li><a href="#verbal-expression">Verbal Expression</a><ul class="toc-headings"><li><a href="#replace-string">Replace String</a></li><li><a href="#methods-list">Methods list</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo-header.png" alt="FastPlaz" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/introduction">Getting Started</a><a href="/docs/fte">FastPlaz Theme Engine</a><a href="/help">Contribution</a></div><div><h5>Community</h5><a href="/docs/showcase">User Showcase</a><a href="https://pascal-id.org" target="_blank" rel="noreferrer noopener">Pascal Indonesia</a><a href="https://t.me/pascalid">Pascal Indonesia on Telegram</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/fastplaz">GitHub</a><a class="github-button" href="https://github.com/fastplaz/fastplaz" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://fastplaz.com" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-header.png" alt="FastPlaz Web Framework" width="170"/></a><section class="copyright">Copyright © 2020 FastPlaz - Built with Docusaurus</section></footer></div></body></html>
