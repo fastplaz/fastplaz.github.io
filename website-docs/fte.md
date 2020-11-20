@@ -92,3 +92,7 @@ Dan beberapa _featured tag_:
 | recaptcha | Menampilkan [ReCaptcha](https://www.google.com/recaptcha/about/) untuk lebih mengamankan form yang kita buat.<br>`[recaptcha key="your_public_key"]`|
 | csrf-token | CSRF Token sebagai langkah sederhana untuk mengamankan form.<br>`[csrf-token name="optionalModuleName"]` |
 | gt | GetText, Multi language support.<br>`[gt text="Welcome"]` |
+
+---
+
+//TODO: Assign
