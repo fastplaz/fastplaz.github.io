@@ -19,10 +19,10 @@ Sebagian fasilitas yang saat ini ada di FastPlaz:
 - Simple URL Routing
 - Simple Method Handling
 - [Simple ORM (Object Relationship Mapping)](/docs/orm)
-- Session Controller
+- [Session Controller](/docs/global#_session)
 - Multi Database Driver
 - Multi Database Connection (Master/Slave)
 - Integration to other services
-- Helper & Additional security (csrf)
+- [Helper](/docs/helper) & Additional security ([recaptcha & csrf](/docs/fte#featured-tag))
 - Distribusi ke shared hosting (cPanel), vps atau serverless.
 

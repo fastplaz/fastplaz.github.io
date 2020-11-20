@@ -9,6 +9,8 @@ sidebar_label: Instalasi
 * [FPC](https://www.freepascal.org/) / [Free Pascal Compiler](https://www.freepascal.org/), version 3.2.0
 * [Lazarus](https://www.lazarus-ide.org/) (optional)
 * [Git Client](https://www.git-scm.com/)
+* Web Server (Apache)
+* Database Server (MySQL)
 
 ## Persiapan
 
@@ -43,3 +45,6 @@ Dan akan terlihat tambahan pilihan baru di menu `File|New Project ...` seperti i
 
 ![Menu FastPlaz](/img/fastplaz/lazarus-menu-new-project.png)
 
+
+---
+//TODO: konfigurasi apache
