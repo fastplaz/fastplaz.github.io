@@ -234,7 +234,7 @@ LIMIT 10
 
 ## Mengolah Data
 
-Untuk menulis dan membaca _single row data_ telah disampaikan di atas. Lalu bagaimana jika akan mengolah data yang berisi beberapa record data? Anda bisa gunakan metode perulangan yang sudah tersedia di Pascal, seperti `for...do`, `repeat...until` ataupun `while...do`.
+Di atas telah disampaikan cara nntuk menulis dan membaca _single row data_. Lalu bagaimana jika akan mengolah data yang berisi beberapa record data? Anda bisa gunakan metode perulangan yang sudah tersedia di Pascal, seperti `for...do`, `repeat...until` ataupun `while...do`.
 
 ```pascal
 for i := 1 to contact.RecordCount do
@@ -243,7 +243,7 @@ begin
 
   // your code here
 
-  contact.Next;
+  contact.Next; // menuju ke baris record berikutnya
 end;
 ```
 ```pascal
@@ -252,7 +252,7 @@ repeat
 
   // your code here
 
-  contact.Next;
+  contact.Next; // menuju ke baris record berikutnya
 until warehouses.EOF;
 ```
 ```pascal
@@ -262,9 +262,11 @@ begin
 
   // your code here
 
-  contact.Next;
+  contact.Next; // menuju ke baris record berikutnya
 end;
 ```
+
+Baris-baris kode di atas akan sangat bermanfaat jika anda akan melakukan pengolahan data di dalam `controller`.
 
 ## Menampilkan Data
 
@@ -283,7 +285,7 @@ procedure TWarehouseController.Get;
 var
   whereAsArray: TStringArray;
 begin
-  DataBaseInit();
+  DataBaseInit(); // inisialisasi koneksi ke database
 
   warehouses.AddJoin('locations', 'id', 
     'warehouses.location_id', 
