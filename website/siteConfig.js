@@ -30,11 +30,9 @@ const siteConfig = {
   //   baseUrl: '/test-site/',
 
   // Used for publishing and more
-  projectName: 'FastPlaz-Docs',
-  organizationName: 'FastPlaz',
-  // For top-level user or org sites, the organization is still the same.
-  // e.g., for the https://JoelMarcey.github.io site, it would be set like...
-  //   organizationName: 'JoelMarcey'
+  projectName: 'fastplaz.github.io',
+  organizationName: 'luridarmawan',
+  customDocsPath: 'website-docs',
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
