@@ -88,17 +88,17 @@ Dengan beberapa **[tag]** khusus seperti:
 
 | Tag  | Description |
 |---|---|
-| $title | Menampilkan `sitename` sesuai di config.json |
-| $slogan | Menampilkan `slogan` sesuai di config.json |
-| $baseurl | Menampilkan `baseurl` sesuai di config.json |
-| $thisurl | URL aktif saat ini |
-| $theme | Nama theme yang digunakan saat ini|
-| $themepath | Path dari theme yang digunakan |
-| $themefullpath | Path lengkap beserta BaseURL dari theme yang digunakan.<br>`<link rel="stylesheet" href="[$themefullpath]/styles/style.css">` |
+| title | Menampilkan `sitename` sesuai di config.json |
+| slogan | Menampilkan `slogan` sesuai di config.json |
+| baseurl | Menampilkan `baseurl` sesuai di config.json |
+| thisurl | URL aktif saat ini |
+| theme | Nama theme yang digunakan saat ini|
+| themepath | Path dari theme yang digunakan |
+| themefullpath | Path lengkap beserta BaseURL dari theme yang digunakan.<br>`<link rel="stylesheet" href="[themefullpath]/styles/style.css">` |
 | datetime | Menampilkan tanggal dan waktu |
 | time | Menampilkan waktu |
 | date | Menampilkan tanggal |
-| $env | Mendapatkan nilai dari variabel environment,<br> misal: `[$env key="HTTP_REFERER"]`
+| env | Mendapatkan nilai dari variabel environment,<br> misal: `[env key="HTTP_REFERER"]`
 |
 | loadtime | Menampilkan lama waktu proses aplikasi dan milidetik |
 | flashmessages | Menampikan Flash Message, bisa digunakan untuk menyimpan pesan kesalahan |
