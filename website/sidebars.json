@@ -13,10 +13,13 @@
       "method"
     ],
     "Penggunaan": [
-      "usage"
+      "usage",
+      "usage-controller",
+      "usage-model"
     ],
     "Showcase": [
-      "showcase"
+      "showcase",
+      "gallery"
     ]
   },
   "docs-other": {
