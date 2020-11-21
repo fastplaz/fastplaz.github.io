@@ -101,7 +101,8 @@ Dengan beberapa **[tag]** khusus seperti:
 | $env | Mendapatkan nilai dari variabel environment,<br> misal: `[$env key="HTTP_REFERER"]`
 |
 | loadtime | Menampilkan lama waktu proses aplikasi dan milidetik |
-| flashmessages | Menampikan Flas Message, bisa digunakan untuk menyimpan pesan kesalahan |
+| flashmessages | Menampikan Flash Message, bisa digunakan untuk menyimpan pesan kesalahan |
+| maincontent | Lokasi untuk menampilkan konten utama setiap modul |
 
 
 ### Featured Tag
