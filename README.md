@@ -1,6 +1,6 @@
 # FastPlaz Docs
 
-Repositori untuk situs [Dokumentasi FastPlaz]((https://fastplaz.github.io/)) di [fastplaz.github.io](https://fastplaz.github.io/). Dokumentasi ini dibuat dengan menggunakan tools [Docusaurus](https://docusaurus.io).
+Repositori untuk situs [Dokumentasi FastPlaz](https://fastplaz.github.io/) di [fastplaz.github.io](https://fastplaz.github.io/). Dokumentasi ini dibuat dengan menggunakan tools [Docusaurus](https://docusaurus.io).
 
 
 ## Petunjuk
