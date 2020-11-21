@@ -76,7 +76,7 @@ Beberapa konstruksi yang tersedia di FTE
 | Tag  | Description |
 |---|---|
 | include | Menyisipkan file .html ke dalam dokumen html<br>`[include file="includes/head"]` |
-| foreach | Perulangan untuk menampilan data, baik dari tabel, array maupun json |
+| [foreach](/docs/fte#foreach) | Perulangan untuk menampilan data, baik dari tabel, array maupun json |
 | if | Pengkodisian |
 | filter | Melakukan _filtering_ terhadap suatu variabel. Saat ini tersedia: nl2br, uppercase, lowercase, ucwords, moreless, dateformathuman, permalink, multifilter.<br>contoh: `[$FullName filter=uppercase]` |
 | assign | Melakukan assign suatu nilai ke dalam variabel |
@@ -114,6 +114,28 @@ Dan beberapa _featured tag_:
 | recaptcha | Menampilkan [ReCaptcha](https://www.google.com/recaptcha/about/) untuk lebih mengamankan form yang kita buat.<br>`[recaptcha key="your_public_key"]`|
 | csrf-token | CSRF Token sebagai langkah sederhana untuk mengamankan form.<br>`[csrf-token name="optionalModuleName"]` |
 | gt | GetText, Multi language support.<br>`[gt text="Welcome"]` |
+
+
+## Contoh Penggunaan
+
+### foreach
+
+```html
+<table>
+  <thead>
+    <tr><th>&nbsp;</th><th>Name</th><th>Address</th><th></th></tr>
+  </thead>
+  <tbody>
+    [foreach from=$Contacts item=aItem type=table]
+      [aItem.sex assignto=$JK]
+      <tr><td>[$index].</td><td>[aItem.first_name] [aItem.last_name]</td><td>[aItem.address]</td><td>[if $JK eq "0"]Laki[else]Perempuan[/if]</td></tr>
+    [/foreach from=$Contacts]
+  </tbody>
+</table>
+```
+Hasilnya:
+![Foreach](/img/fastplaz/fte-foreach.png)
+
 
 ---
 
