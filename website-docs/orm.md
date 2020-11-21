@@ -8,6 +8,16 @@ _Object Relationship Mapping_ adalah sebuah teknik yang digunakan dalam pemrogra
  
 FastPlaz menyediakan *Simple ORM* untuk mengakomodir hal-hal di atas, khususnya untuk penggunaan CRUD sederhana.
 
+Database yang saat ini didukung sesuai dengan yang didukung oleh Free Pascal, yaitu:
+- Firebird
+- MySQL
+- ODBC
+- Oracle
+- PostgreSQL
+- SQLite3
+
+Dan dapat dipilih melalui [konfigurasi](/docs/architecture#konfigurasi) di `config.json`.
+
 ## Model
 
 Langkah pertama dalam menghubungkan aplikasi ke database adalah dengan membuat `Model`.
