@@ -15,12 +15,14 @@
     "Penggunaan": [
       "usage",
       "usage-controller",
-      "usage-model"
+      "usage-model",
+      "usage-routing"
     ],
     "Latihan": [
       "example-default",
       "example-database",
-      "example-api-echo"
+      "example-api-echo",
+      "example-api-rest"
     ],
     "Showcase": [
       "showcase",
