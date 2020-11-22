@@ -75,9 +75,9 @@ Beberapa konstruksi yang tersedia di FTE
 
 | Tag  | Description |
 |---|---|
-| include | Menyisipkan file .html ke dalam dokumen html<br>`[include file="includes/head"]` |
+| [include](/docs/fte#include) | Menyisipkan file .html ke dalam dokumen html<br>`[include file="includes/head"]` |
 | [foreach](/docs/fte#foreach) | Perulangan untuk menampilan data, baik dari tabel, array maupun json |
-| if | Pengkodisian |
+| [if](/docs/fte#foreach) | Pengkodisian |
 | filter | Melakukan _filtering_ terhadap suatu variabel. Saat ini tersedia: nl2br, uppercase, lowercase, ucwords, moreless, dateformathuman, permalink, multifilter.<br>contoh: `[$FullName filter=uppercase]` |
 | assign | Melakukan assign suatu nilai ke dalam variabel |
 | block | block controller |
@@ -118,7 +118,30 @@ Dan beberapa _featured tag_:
 
 ## Contoh Penggunaan
 
+Contoh lebih lengkap tentang penggunaan `tag` ini bisa dipelajari dari _example_ yang sudah disediakan, khususnya dari hasil generasi _Full Package Application_.
+
+### include
+
+```html
+<!DOCTYPE html>
+<html>
+[include file="includes/head"]
+<body id="page-top">
+    [include file="includes/navigation"]
+    <div id="main">
+        <div class="container">
+            <h3>[$Title filter=ucwords]</h3>
+        </div>
+        [maincontent]
+    </div>
+    [include file="includes/footer"]
+</body>
+</html>
+```
+
 ### foreach
+
+Di sini juga mencontohkan penggunaan `if` di dalam blok `foreach`.
 
 ```html
 <table>
@@ -135,7 +158,6 @@ Dan beberapa _featured tag_:
 ```
 Hasilnya:
 ![Foreach](/img/fastplaz/fte-foreach.png)
-
 
 ---
 
