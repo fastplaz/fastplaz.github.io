@@ -17,6 +17,10 @@
       "usage-controller",
       "usage-model"
     ],
+    "Latihan": [
+      "example-default",
+      "example-database"
+    ],
     "Showcase": [
       "showcase",
       "gallery"
