@@ -17,6 +17,9 @@
       "usage-controller",
       "usage-model"
     ],
+    "Latihan": [
+      "example-default"
+    ],
     "Showcase": [
       "showcase",
       "gallery"
