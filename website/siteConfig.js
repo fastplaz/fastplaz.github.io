@@ -41,7 +41,7 @@ const siteConfig = {
     {doc: 'orm', label: 'ORM'},
     {doc: 'fte', label: 'FTE'},
     {page: 'help', label: 'Help'},
-    {blog: true, label: 'Blog'},
+    {blog: true, label: 'Release'},
   ],
 
   // If you have users set above, you add it here:
