@@ -36,6 +36,17 @@ img:hover {
   box-shadow: 4px 4px 6px #9b9797;
 }
 
+#featured {
+  padding-top: 20px;
+}
+#featured img:hover {
+  box-shadow: none; 
+}
+
+.mainContainer {
+  padding-top: 20px;
+}
+
 :root {
   --star-command-blue: #0077b5;
   --telegram-blue: #0088CC;
