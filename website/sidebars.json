@@ -19,7 +19,8 @@
     ],
     "Latihan": [
       "example-default",
-      "example-database"
+      "example-database",
+      "example-api-echo"
     ],
     "Showcase": [
       "showcase",
