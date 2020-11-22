@@ -150,13 +150,13 @@ class Index extends React.Component {
             content: 'Dengan metode MVC _(model-view-controller)_ akan memudahkan developer dalam mengembangkan aplikasi.',
             image: `${baseUrl}img/home/mvc.png`,
             imageAlign: 'top',
-            title: 'MVC',
+            title: '<a href="/docs/architecture">MVC</a>',
           },
           {
             content: 'Akses database dengan mudah menggunakan Model ORM _(Object Relationship Mapping)_.',
             image: `${baseUrl}img/home/orm.png`,
             imageAlign: 'top',
-            title: 'ORM',
+            title: '<a href="/docs/orm">ORM</a>',
           },
           {
             content: 'Mudah didistribusikan ke berbagai platform, termasuk untuk shared hosting cPanel dan juga Serverless.',
@@ -168,7 +168,7 @@ class Index extends React.Component {
             content: '_Template Engine_ yang simple akan makin membuat menarik hati.',
             image: `${baseUrl}img/home/fte.png`,
             imageAlign: 'top',
-            title: 'FTE Engine',
+            title: '<a href="/docs/fte">FTE</a>',
           },
         ]}
       </Block>
