@@ -117,6 +117,7 @@ Detilnya bisa Anda pelajari dari contoh file yang tersedia di <a href="https://g
 <tr><td><a href="/docs/fte#foreach">if</a></td><td>Pengkodisian</td></tr>
 <tr><td>filter</td><td>Melakukan <em>filtering</em> terhadap suatu variabel. Saat ini tersedia: nl2br, uppercase, lowercase, ucwords, moreless, dateformathuman, permalink, multifilter.<br>contoh: <code>[$FullName filter=uppercase]</code></td></tr>
 <tr><td>assign</td><td>Melakukan assign suatu nilai ke dalam variabel</td></tr>
+<tr><td>assignto</td><td>Melakukan assign nilai dari suatu field tabel  ke dalam variabel</td></tr>
 <tr><td>block</td><td>block controller</td></tr>
 </tbody>
 </table>
@@ -159,6 +160,8 @@ Detilnya bisa Anda pelajari dari contoh file yang tersedia di <a href="https://g
 <h2><a class="anchor" aria-hidden="true" id="contoh-penggunaan"></a><a href="#contoh-penggunaan" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contoh Penggunaan</h2>
 <p>Contoh lebih lengkap tentang penggunaan <code>tag</code> ini bisa dipelajari dari <em>example</em> yang sudah disediakan, khususnya dari hasil generasi <em>Full Package Application</em>.</p>
 <h3><a class="anchor" aria-hidden="true" id="include"></a><a href="#include" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>include</h3>
+<p><code>include</code> berfungsi untuk menyisipkan file .html ke dalam dokumen. Lokasi file merujuk pada direktori dari theme yang dipakai saat itu.</p>
+<p>Jika saat itu sedang menggunakan theme <code>Dashboard</code> dan ditemukan tag <code>[include file=&quot;includes/head&quot;]</code> maka file akan merujuk ke <code>themes/Dashboard/templates/includes/head.html</code>.</p>
 <pre><code class="hljs css language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
 [include file="includes/head"]
@@ -175,21 +178,40 @@ Detilnya bisa Anda pelajari dari contoh file yang tersedia di <a href="https://g
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="foreach"></a><a href="#foreach" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>foreach</h3>
-<p>Di sini juga mencontohkan penggunaan <code>if</code> di dalam blok <code>foreach</code>.</p>
-<pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span><span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Address<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
-    [foreach from=$Contacts item=aItem type=table]
-      [aItem.sex assignto=$JK]
-      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>[$index].<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>[aItem.first_name] [aItem.last_name]<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>[aItem.address]<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>[if $JK eq "0"]Laki[else]Perempuan[/if]<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-    [/foreach from=$Contacts]
-  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+<p><code>foreach</code> merupakan perulangan yang berfungsi untuk menampilkan isi dari suatu data yang bertipe table, array ataupun json.</p>
+<p>Format penggunaan <code>foreach</code></p>
+<pre><code class="hljs css language-bash">[foreach from=<span class="hljs-variable">$VariableName</span> item=row <span class="hljs-built_in">type</span>=table]
+  
+  html content: [row.nama_field]
+
+[/foreach from=<span class="hljs-variable">$VariableName</span>]
+</code></pre>
+<p><code>$VariableName</code> didefinisikan melalui kode di dalam kontroller Anda.</p>
+<pre><code class="hljs css language-pascal">ThemeUtil.AssignVar[<span class="hljs-string">'$VariableName'</span>] := @Model.Data;
+</code></pre>
+<p>Kode HTML berikut ini juga mencontohkan penggunaan <code>if</code> di dalam blok <code>foreach</code>.</p>
+<pre><code class="hljs css language-bash">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;&amp;nbsp;&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Address&lt;/th&gt;&lt;th&gt;&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    [foreach from=<span class="hljs-variable">$Contacts</span> item=aItem <span class="hljs-built_in">type</span>=table]
+      [aItem.sex assignto=<span class="hljs-variable">$JK</span>]
+      &lt;tr&gt;&lt;td&gt;[<span class="hljs-variable">$index</span>].&lt;/td&gt;&lt;td&gt;[aItem.first_name] [aItem.last_name]&lt;/td&gt;&lt;td&gt;[aItem.address]&lt;/td&gt;&lt;td&gt;[<span class="hljs-keyword">if</span> <span class="hljs-variable">$JK</span> eq <span class="hljs-string">"0"</span>]Laki[<span class="hljs-keyword">else</span>]Perempuan[/<span class="hljs-keyword">if</span>]&lt;/td&gt;&lt;/tr&gt;
+    [/foreach from=<span class="hljs-variable">$Contacts</span>]
+  &lt;/tbody&gt;
+&lt;/table&gt;
 </code></pre>
 <p>Hasilnya:
 <img src="/img/fastplaz/fte-foreach.png" alt="Foreach"></p>
+<h3><a class="anchor" aria-hidden="true" id="assignto"></a><a href="#assignto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>assignto</h3>
+<p><code>assignto</code> berfungsi untuk melakukan assign nilai dari suatu field tabel ke dalam variabel. Biasanya berguna jika ada proses pengkondisian terhadap field tersebut.</p>
+<p>Jika terdapat suatu field <code>sex</code> dari tabel <code>contacts</code> yang berisi nilai 0 atau 1 yang berarti lelaki atau perempuan, maka kode di html-nya akan seperti contoh ini:</p>
+<pre><code class="hljs css language-bash">[foreach from=<span class="hljs-variable">$Contacts</span> item=aItem <span class="hljs-built_in">type</span>=table]
+  [aItem.sex assignto=<span class="hljs-variable">$JK</span>]
+  &lt;tr&gt;&lt;td&gt;[<span class="hljs-variable">$index</span>].&lt;/td&gt;&lt;td&gt;[aItem.first_name] [aItem.last_name]&lt;/td&gt;&lt;td&gt;[aItem.address]&lt;/td&gt;&lt;td&gt;[<span class="hljs-keyword">if</span> <span class="hljs-variable">$JK</span> eq <span class="hljs-string">"0"</span>]Laki[<span class="hljs-keyword">else</span>]Perempuan[/<span class="hljs-keyword">if</span>]&lt;/td&gt;&lt;/tr&gt;
+[/foreach from=<span class="hljs-variable">$Contacts</span>]
+</code></pre>
 <hr>
 <p>//TODO: Assign</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/orm"><span class="arrow-prev">← </span><span>ORM</span></a><a class="docs-next button" href="/docs/global"><span>Variabel Global</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#theme">Theme</a></li><li><a href="#tag">Tag</a><ul class="toc-headings"><li><a href="#tag-konstruksi">Tag Konstruksi</a></li><li><a href="#tag-khusus">Tag Khusus</a></li><li><a href="#featured-tag">Featured Tag</a></li></ul></li><li><a href="#contoh-penggunaan">Contoh Penggunaan</a><ul class="toc-headings"><li><a href="#include">include</a></li><li><a href="#foreach">foreach</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo-header.png" alt="FastPlaz" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/introduction">Getting Started</a><a href="/docs/fte">FastPlaz Theme Engine</a><a href="/help">Contribution</a></div><div><h5>Community</h5><a href="/docs/showcase">User Showcase</a><a href="https://pascal-id.org" target="_blank" rel="noreferrer noopener">Pascal Indonesia</a><a href="https://t.me/pascalid">Pascal Indonesia on Telegram</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/fastplaz">GitHub</a><a class="github-button" href="https://github.com/fastplaz/fastplaz" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://fastplaz.com" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-header.png" alt="FastPlaz Web Framework" width="170"/></a><section class="copyright">Copyright © 2020 FastPlaz - Built with Docusaurus</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/orm"><span class="arrow-prev">← </span><span>ORM</span></a><a class="docs-next button" href="/docs/global"><span>Variabel Global</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#theme">Theme</a></li><li><a href="#tag">Tag</a><ul class="toc-headings"><li><a href="#tag-konstruksi">Tag Konstruksi</a></li><li><a href="#tag-khusus">Tag Khusus</a></li><li><a href="#featured-tag">Featured Tag</a></li></ul></li><li><a href="#contoh-penggunaan">Contoh Penggunaan</a><ul class="toc-headings"><li><a href="#include">include</a></li><li><a href="#foreach">foreach</a></li><li><a href="#assignto">assignto</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo-header.png" alt="FastPlaz" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/introduction">Getting Started</a><a href="/docs/fte">FastPlaz Theme Engine</a><a href="/help">Contribution</a></div><div><h5>Community</h5><a href="/docs/showcase">User Showcase</a><a href="https://pascal-id.org" target="_blank" rel="noreferrer noopener">Pascal Indonesia</a><a href="https://t.me/pascalid">Pascal Indonesia on Telegram</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/fastplaz">GitHub</a><a class="github-button" href="https://github.com/fastplaz/fastplaz" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://fastplaz.com" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-header.png" alt="FastPlaz Web Framework" width="170"/></a><section class="copyright">Copyright © 2020 FastPlaz - Built with Docusaurus</section></footer></div></body></html>
