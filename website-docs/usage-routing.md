@@ -25,5 +25,24 @@ Anggap jika ada url `http://domain/customer` yang akan diolah oleh _controller_ 
 Route['/customer'] := TCustomerController;
 ```
 
-//TODO: routing tutorial
- 
+### Custom Routing
+
+Tentunya kawan-kawan pernah melihat suatu url yang panjang tapi tetap menarik dilihat karena tidak menggunakan variabel di query string, seperti ini:
+```
+https://www.fastplaz.com/2014/12/wordpress-loader-contoh-aplikasi-fastplaz/
+```
+Biasa terlihat di situs-situs berita online, blog dan sejenisnya. Routing untuk uri tersebut kurang lebih akan sepert ini:
+
+```pascal
+Route['^/([0-9]+)/([0-9]+)/(.*)/$'] := TNewsController; 
+```
+
+Demikian juga jika ingin menampilkan profil dari data **kustomer** menjadi `http://localhost/customer/2/profile/`.
+
+```pascal
+// http://localhost/customer/2/profile/
+Route['^/([0-9]+)/profile/$'] := TProfileModule; 
+
+// handler uri: "/customer/{id}/"
+Route['^/([0-9]+)'] := TCustomersModule; Route['/'] := TCustomersModule;
+```

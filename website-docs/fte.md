@@ -80,6 +80,7 @@ Beberapa konstruksi yang tersedia di FTE
 | [if](/docs/fte#foreach) | Pengkodisian |
 | filter | Melakukan _filtering_ terhadap suatu variabel. Saat ini tersedia: nl2br, uppercase, lowercase, ucwords, moreless, dateformathuman, permalink, multifilter.<br>contoh: `[$FullName filter=uppercase]` |
 | assign | Melakukan assign suatu nilai ke dalam variabel |
+| assignto | Melakukan assign nilai dari suatu field tabel  ke dalam variabel |
 | block | block controller |
 
 ### Tag Khusus
@@ -122,6 +123,10 @@ Contoh lebih lengkap tentang penggunaan `tag` ini bisa dipelajari dari _example_
 
 ### include
 
+`include` berfungsi untuk menyisipkan file .html ke dalam dokumen. Lokasi file merujuk pada direktori dari theme yang dipakai saat itu.
+
+Jika saat itu sedang menggunakan theme `Dashboard` dan ditemukan tag `[include file="includes/head"]` maka file akan merujuk ke `themes/Dashboard/templates/includes/head.html`.
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -139,11 +144,28 @@ Contoh lebih lengkap tentang penggunaan `tag` ini bisa dipelajari dari _example_
 </html>
 ```
 
+
 ### foreach
 
-Di sini juga mencontohkan penggunaan `if` di dalam blok `foreach`.
+`foreach` merupakan perulangan yang berfungsi untuk menampilkan isi dari suatu data yang bertipe table, array ataupun json.
 
-```html
+Format penggunaan `foreach`
+```bash
+[foreach from=$VariableName item=row type=table]
+  
+  html content: [row.nama_field]
+
+[/foreach from=$VariableName]
+```
+
+`$VariableName` didefinisikan melalui kode di dalam kontroller Anda.
+```pascal
+ThemeUtil.AssignVar['$VariableName'] := @Model.Data;
+```
+
+Kode HTML berikut ini juga mencontohkan penggunaan `if` di dalam blok `foreach`.
+
+```bash
 <table>
   <thead>
     <tr><th>&nbsp;</th><th>Name</th><th>Address</th><th></th></tr>
@@ -158,6 +180,19 @@ Di sini juga mencontohkan penggunaan `if` di dalam blok `foreach`.
 ```
 Hasilnya:
 ![Foreach](/img/fastplaz/fte-foreach.png)
+
+### assignto
+
+`assignto` berfungsi untuk melakukan assign nilai dari suatu field tabel ke dalam variabel. Biasanya berguna jika ada proses pengkondisian terhadap field tersebut.
+
+Jika terdapat suatu field `sex` dari tabel `contacts` yang berisi nilai 0 atau 1 yang berarti lelaki atau perempuan, maka kode di html-nya akan seperti contoh ini:
+
+```bash
+[foreach from=$Contacts item=aItem type=table]
+  [aItem.sex assignto=$JK]
+  <tr><td>[$index].</td><td>[aItem.first_name] [aItem.last_name]</td><td>[aItem.address]</td><td>[if $JK eq "0"]Laki[else]Perempuan[/if]</td></tr>
+[/foreach from=$Contacts]
+```
 
 ---
 
