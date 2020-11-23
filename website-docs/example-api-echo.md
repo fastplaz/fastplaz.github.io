@@ -4,7 +4,9 @@ title: Example API (echo)
 sidebar_label: API (echo)
 ---
 
-Membuat API? Mudah kok. Sudah disediakan wizard di menu <br>`File|New|FastPlaz|API Application...`.
+Membuat API? Mudah kok. 
+
+Sudah disediakan wizard di menu `File|New|FastPlaz|API Application...`.<br>
 
 ![echo](/img/example/api-echo-01.png)
 

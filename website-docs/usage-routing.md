@@ -15,7 +15,9 @@ Format penulisan _route_ di Pascal seperti ini:
 Route['/permalink'] := TNamaController;
 ```
 
-Penulisan permalink dilakukan dengan `regex`.
+Penulisan permalink dilakukan dengan `regex`. 
+
+> Regular Expression, sering ditulis/disebut juga Regex/Regexp, adalah deretan karakter spesial yang mendefinisikan sebuah pola dalam pencarian teks.
 
 ## Implementasi
 
@@ -45,4 +47,41 @@ Route['^/([0-9]+)/profile/$'] := TProfileModule;
 
 // handler uri: "/customer/{id}/"
 Route['^/([0-9]+)'] := TCustomersModule; Route['/'] := TCustomersModule;
+```
+
+### Membaca Data
+
+Lalu bagaimana cara membaca datanya?
+
+Mudah kok, sama seperti membaca query string seperti biasa, tetap menggunakan `_GET`, hanya saja kali ini menggunakan index sesuai urutan parameter regex-nya.
+
+Misal untuk 
+```pascal
+Route['^/([0-9]+)/profile/$'] := TProfileModule; 
+```
+
+Maka untuk membaca nilai id dari kustomer cukup dengan
+```pascal
+var
+  customerID: string;
+
+.
+.  
+customerID := _GET['$1'];
+```
+
+Sedangkan untuk routing link berita seperti contoh diatas
+```pascal
+Route['^/([0-9]+)/([0-9]+)/(.*)/$'] := TNewsController; 
+```
+Maka cara membacanya:
+```pascal
+var
+  newsYear, newsMonth, newsTitle: string;
+
+.
+.  
+newsYear := _GET['$1'];
+newsMonth := _GET['$2'];
+newsTitle := _GET['$3'];
 ```
