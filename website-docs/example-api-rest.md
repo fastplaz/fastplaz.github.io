@@ -4,7 +4,9 @@ title: REST API
 sidebar_label: REST API
 ---
 
-Membuat API? Mudah kok. Sudah disediakan wizard di menu <br>`File|New|FastPlaz|API Application...`.
+Membuat API? Mudah kok. 
+
+Sudah disediakan wizard di menu `File|New|FastPlaz|API Application...`.
 
 ![REST](/img/example/rest-0.png)
 
