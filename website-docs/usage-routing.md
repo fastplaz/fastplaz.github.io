@@ -85,3 +85,33 @@ newsYear := _GET['$1'];
 newsMonth := _GET['$2'];
 newsTitle := _GET['$3'];
 ```
+
+### Group Routing
+
+Cara routing dan membaca data seperti di atas adalah cara yang paling sederhana, tapi terkadang menyulitkan dalam pembacaan variabelnya karena harus mengingat urutan indeksnya.
+
+Membaca url seperti ini 
+```
+https://www.fastplaz.com/2014/12/wordpress-loader-contoh-aplikasi-fastplaz/
+```
+tentu akan lebih mudah jika langsung membaca sebagai variabel `year`, `month` dan `title`.
+
+Pola _routing_ di dalam platform [FastPlaz](https://fastplaz.com) memungkinkan hal tersebut dengan memanfaatkan _named group regex_. Format penulisan regex-nya adalah ```(?P<name>regex)```. Maka routing untuk URL di atas akan menjadi:
+```pascal
+Route['^/(?P<year>[0-9]+)/(?P<month>[0-9]+)/(?P<title>.*)/$'] := TNewsController; 
+```
+Sedangkan kode Pascal untuk membaca variabel tersebut akan menjadi seperti ini:
+```pascal
+var
+  year, month, title: string;
+
+.
+.  
+year := _GET['year'];
+month := _GET['month'];
+title := _GET['title'];
+```
+Memang menulis routingnya akan sedikit panjang, tapi akan lebih memudahkan proses development.
+
+
+**FastPlaz, Ringan Tanpa Beban***
