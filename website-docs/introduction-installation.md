@@ -25,6 +25,7 @@ $ git clone -b development https://github.com/fastplaz/fastplaz.git
 Disarankan menggunakan cara clone ini dibandingkan dengan download manual. Jika nanti ada update atau perubahan, Anda cukup melakukan `pull` saja.
 
 ```bash
+$ git reset --hard HEAD
 $ git pull
 ```
 
