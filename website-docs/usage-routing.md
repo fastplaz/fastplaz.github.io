@@ -114,4 +114,4 @@ title := _GET['title'];
 Memang menulis routingnya akan sedikit panjang, tapi akan lebih memudahkan proses development.
 
 
-**FastPlaz, Ringan Tanpa Beban***
+**FastPlaz, Ringan Tanpa Beban**
