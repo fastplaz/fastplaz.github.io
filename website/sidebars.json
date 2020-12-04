@@ -29,7 +29,9 @@
       "gallery"
     ],
     "Utilitas": [
-      "db-explorer"
+      "db-explorer",
+      "json-validator",
+      "regex-tester"
     ]
   },
   "docs-other": {
