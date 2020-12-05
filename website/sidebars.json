@@ -31,7 +31,8 @@
     "Utilitas": [
       "db-explorer",
       "json-validator",
-      "regex-tester"
+      "regex-tester",
+      "reveal-in-finder"
     ]
   },
   "docs-other": {
