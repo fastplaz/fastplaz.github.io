@@ -9,8 +9,9 @@
       "orm",
       "fte",
       "global",
+      "method",
       "helper",
-      "method"
+      "common-function"
     ],
     "Penggunaan": [
       "usage",
