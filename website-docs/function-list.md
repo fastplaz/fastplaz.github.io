@@ -21,7 +21,7 @@ _function_ and _procedure_ list in [FastPlaz](https://fastplaz.com).
 | MarkdownToHTML | Convert Markdown to HTML  |
 | StreamToString | Convert Stream to String  |
 | ISO8601ToDateTime | Convert Convert an ISO 8601 string to a TDateTime |
-| StringHumanToNominal | `s := StringHumanToNominal('satu juga lima ratus dua puluh');` |
+| StringHumanToNominal | `s := StringHumanToNominal('satu juta lima ratus dua puluh');` |
 | StringHumanToDate | `TheDate := StringHumanToDate('17 agustus 1945');` |
 
 
