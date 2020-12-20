@@ -8,20 +8,19 @@ _function_ and _procedure_ list in [FastPlaz](https://fastplaz.com).
 
 ## Converter
 
-
 | Name | Description |
 |---|---|
-| i2s | Integer to String Converter (with execption handler) |
-| s2i | String to Integer Converter (with execption handler)  |
-| f2s | Float to String Converter (with execption handler) |
-| s2f | String to Float Converter (with execption handler) |
-| b2i | Boolean to Integer Converter |
-| b2is | Boolean to String (`1`/`0`) Converter |
-| b2s | Boolean to String (`True`/`False`) Converter |
-| HexToInt | Hexa string to integer converter |
-| MarkdownToHTML | Markdown to HTML converter |
-| StreamToString | Stream to String Converter |
-| ISO8601ToDateTime | Convert an ISO 8601 string to a TDateTime |
+| i2s | Convert Integer to String (with execption handler) |
+| s2i | Convert String to Integer  (with execption handler)  |
+| f2s | Convert Float to String  (with execption handler) |
+| s2f | Convert String to Float  (with execption handler) |
+| b2i | Convert Boolean to Integer  |
+| b2is | Convert Boolean to String (`1`/`0`)  |
+| b2s | Convert Boolean to String (`True`/`False`)  |
+| HexToInt | Convert Hexa string to integer  |
+| MarkdownToHTML | Convert Markdown to HTML  |
+| StreamToString | Convert Stream to String  |
+| ISO8601ToDateTime | Convert Convert an ISO 8601 string to a TDateTime |
 | StringHumanToNominal | `s := StringHumanToNominal('satu juga lima ratus dua puluh');` |
 | StringHumanToDate | `TheDate := StringHumanToDate('17 agustus 1945');` |
 
@@ -39,7 +38,7 @@ _function_ and _procedure_ list in [FastPlaz](https://fastplaz.com).
 | isDomain | Determine whether a variable is domain |
 | RandomString | Generate Random String |
 | ReplaceAll | |
-| StrInArray | String in Array checking<br>See [Array Helper](/docs/helper#array_helper) for other option. |
+| StrInArray | Determine whether a String is in Array<br>See [Array Helper](/docs/helper#array_helper) for other option. |
 | StringCut | |
 | StringsExists | |
 | StripCharsInSet | |
