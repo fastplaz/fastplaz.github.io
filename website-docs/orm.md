@@ -158,6 +158,28 @@ begin
 end;
 ```
 
+
+```pascal
+// pencarian data dengan pengkodisian, order dan limitasi
+// order by name
+// limit 10 offset 90
+var
+  fieldList: string;
+  whereAsArray: TStringArray;
+
+.
+. 
+whereAsArray.Add('first_name="luri"');
+fieldList := 'name, address, status';
+if contact.Find(whereAsArray, 'name', 10, fieldList, 90) then
+begin
+  //
+  // data ditemukan
+  //
+end;
+```
+
+
 #### Join Table
 
 Join terhadap beberapa tabel lain pun bisa dilakukan dengan mudah. Tambahkan kode berikut sebelum perintah pencariaan.

@@ -96,7 +96,7 @@ Dengan beberapa **[tag]** khusus seperti:
 | theme | Nama theme yang digunakan saat ini|
 | themepath | Path dari theme yang digunakan |
 | themefullpath | Path lengkap beserta BaseURL dari theme yang digunakan.<br>`<link rel="stylesheet" href="[themefullpath]/styles/style.css">` |
-| datetime | Menampilkan tanggal dan waktu, dengan format default 'dd MMM YYYY HH:nn:ss' |
+| datetime | Menampilkan tanggal dan waktu, dengan format default 'dd MMM YYYY HH:nn:ss'. Gunakan parameter 'format' untuk mengatur bentuk tampilan.<br>Contoh:`[date format="yyyy/dd"]` |
 | time | Menampilkan waktu |
 | date | Menampilkan tanggal, dengan format default 'dd MMM YYYY'. Gunakan parameter 'format' untuk mengatur bentuk tampilan.<br>Contoh:`[date format="yyyy/dd"]` |
 | env | Mendapatkan nilai dari variabel environment,<br> misal: `[env key="HTTP_REFERER"]`
