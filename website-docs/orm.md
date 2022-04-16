@@ -170,7 +170,7 @@ var
 .
 . 
 whereAsArray.Add('first_name="luri"');
-fieldList := 'name, address, status';
+fieldList := 'cid, name, address, status';
 if contact.Find(whereAsArray, 'name', 10, fieldList, 90) then
 begin
   //
