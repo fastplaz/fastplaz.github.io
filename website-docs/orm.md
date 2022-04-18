@@ -234,6 +234,50 @@ end;
 
 ### Delete
 
+```pascal
+// delete with index
+
+if contact.Delete(6) then
+begin
+  //
+end;
+
+```
+
+```pascal
+// delete with condition
+var
+  whereAsArray: TStringArray;
+
+.
+.
+
+whereAsArray.Add('status_id=1');
+if contact.Delete(whereAsArray) then
+begin
+  //
+end;
+
+```
+
+```pascal
+// delete with Find function
+var
+  whereAsArray: TStringArray;
+
+.
+.
+
+whereAsArray.Add('status_id=1');
+if contact.FindFirst(whereAsArray) then
+begin
+  // do something
+
+  Delete();
+end;
+
+```
+
 
 ## Query Builder
 
