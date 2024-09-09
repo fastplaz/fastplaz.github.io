@@ -99,6 +99,7 @@ File konfigurasi terletak di file `config/config.json`, dengan struktur sebagai 
       "database_name" : "the_database_name",
       "charset" : "",
       "prefix" : "",
+      "version_check": false,
       "library" : ""
     }
   },
