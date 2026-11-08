@@ -399,7 +399,7 @@ Dan kode HTML di bagian view cukup seperti berikut:
 </table>
 ```
 
-Informasi tentang penggunaan tag `foreach` bisa dipelajari di bagian [FTE](/docs/fte/#foreach)
+Informasi tentang penggunaan tag `foreach` bisa dipelajari di bagian [FTE](/docs/fte#foreach)
 
 Dan hasilnya kurang lebih akan seperti ini
 ![ORM View](/img/fastplaz/orm-result.png)

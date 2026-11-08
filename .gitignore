@@ -227,3 +227,7 @@ website/i18n/*
 *.lock
 backup.bat
 backup.sh
+
+# Docusaurus v3
+website/.docusaurus
+website/.cache-loader

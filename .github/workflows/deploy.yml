@@ -1,0 +1,44 @@
+name: Deploy docs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-docs
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - run: npm ci
+      - run: npm run build
+
+      # Publish only from the upstream repo, never from forks or PRs.
+      # GitHub Pages for fastplaz.github.io is served from the `master` branch.
+      - name: Publish to master
+        if: github.event_name != 'pull_request' && github.repository == 'fastplaz/fastplaz.github.io'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: website/build
+          publish_branch: master
+          commit_message: Deploy website
