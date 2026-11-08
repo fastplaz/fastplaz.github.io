@@ -1,0 +1,62 @@
+{
+  "link.title.Docs": {
+    "message": "Docs",
+    "description": "The title of the footer links column with title=Docs in the footer"
+  },
+  "link.title.Community": {
+    "message": "Community",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.More": {
+    "message": "More",
+    "description": "The title of the footer links column with title=More in the footer"
+  },
+  "link.item.label.Getting Started": {
+    "message": "Getting Started",
+    "description": "The label of footer link with label=Getting Started linking to /docs/introduction"
+  },
+  "link.item.label.FastPlaz Theme Engine": {
+    "message": "FastPlaz Theme Engine",
+    "description": "The label of footer link with label=FastPlaz Theme Engine linking to /docs/fte"
+  },
+  "link.item.label.AI Agent Plane": {
+    "message": "AI Agent Plane",
+    "description": "The label of footer link with label=AI Agent Plane linking to /docs/ai-agent-plane"
+  },
+  "link.item.label.Standalone HTTP & CGI": {
+    "message": "Standalone HTTP & CGI",
+    "description": "The label of footer link with label=Standalone HTTP & CGI linking to /docs/standalone"
+  },
+  "link.item.label.Contribution": {
+    "message": "Contribution",
+    "description": "The label of footer link with label=Contribution linking to /help"
+  },
+  "link.item.label.User Showcase": {
+    "message": "User Showcase",
+    "description": "The label of footer link with label=User Showcase linking to /docs/showcase"
+  },
+  "link.item.label.Komunitas Pascal Indonesia": {
+    "message": "Pascal Indonesia Community",
+    "description": "The label of footer link with label=Komunitas Pascal Indonesia linking to https://pascal-dev.org"
+  },
+  "link.item.label.Pascal Indonesia on Telegram": {
+    "message": "Pascal Indonesia on Telegram",
+    "description": "The label of footer link with label=Pascal Indonesia on Telegram linking to https://t.me/pascalid"
+  },
+  "link.item.label.Blog": {
+    "message": "Blog",
+    "description": "The label of footer link with label=Blog linking to /blog"
+  },
+  "link.item.label.fastplaz.com": {
+    "message": "fastplaz.com",
+    "description": "The label of footer link with label=fastplaz.com linking to https://www.fastplaz.com"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/fastplaz"
+  },
+  "logo.alt": {
+    "message": "FastPlaz Web Framework",
+    "description": "The alt text of footer logo"
+  }
+}

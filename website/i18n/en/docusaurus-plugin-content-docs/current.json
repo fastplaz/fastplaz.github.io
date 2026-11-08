@@ -1,0 +1,34 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docs.category.Pengantar": {
+    "message": "Introduction",
+    "description": "The label for category 'Pengantar' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.Konsep & Fitur": {
+    "message": "Concepts & Features",
+    "description": "The label for category 'Konsep & Fitur' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.Penggunaan": {
+    "message": "Usage",
+    "description": "The label for category 'Penggunaan' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.AI Agent Plane": {
+    "message": "AI Agent Plane",
+    "description": "The label for category 'AI Agent Plane' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.Latihan": {
+    "message": "Tutorials",
+    "description": "The label for category 'Latihan' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.Showcase": {
+    "message": "Showcase",
+    "description": "The label for category 'Showcase' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.Utilitas": {
+    "message": "Tools",
+    "description": "The label for category 'Utilitas' in sidebar 'docs'"
+  }
+}

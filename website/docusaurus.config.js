@@ -32,7 +32,11 @@ const config = {
 
   i18n: {
     defaultLocale: 'id',
-    locales: ['id'],
+    locales: ['id', 'en'],
+    localeConfigs: {
+      id: {label: 'Bahasa Indonesia', htmlLang: 'id-ID'},
+      en: {label: 'English', htmlLang: 'en-US'},
+    },
   },
 
   presets: [
@@ -44,8 +48,10 @@ const config = {
           path: '../website-docs',
           routeBasePath: 'docs',
           sidebarPath: './sidebars.js',
-          editUrl:
-            'https://github.com/fastplaz/fastplaz.github.io/edit/main/website-docs/',
+          editUrl: ({locale, docPath}) =>
+            locale === 'id'
+              ? `https://github.com/fastplaz/fastplaz.github.io/edit/main/website-docs/${docPath}`
+              : `https://github.com/fastplaz/fastplaz.github.io/edit/main/website/i18n/${locale}/docusaurus-plugin-content-docs/current/${docPath}`,
         },
         blog: {
           blogTitle: 'Release',
@@ -86,6 +92,7 @@ const config = {
           {type: 'doc', docId: 'ai-agent-plane', label: 'Agent Plane', position: 'left'},
           {to: '/help', label: 'Help', position: 'left'},
           {to: '/blog', label: 'Release', position: 'left'},
+          {type: 'localeDropdown', position: 'right'},
           {
             href: 'https://github.com/fastplaz/fastplaz',
             label: 'GitHub',
