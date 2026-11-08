@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkfastplaz_docs||=[]).push([[7882],{6341(a){a.exports=JSON.parse('{"authors":[{"name":"Luri Darmawan","url":"https://github.com/luridarmawan","imageURL":"https://github.com/luridarmawan.png","key":"luri","page":null,"count":5}]}')}}]);

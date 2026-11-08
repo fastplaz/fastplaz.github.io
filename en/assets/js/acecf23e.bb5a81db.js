@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkfastplaz_docs||=[]).push([[1903],{1912(s){s.exports=JSON.parse('{"blogBasePath":"/en/blog","blogTitle":"Release","authorsListPath":"/en/blog/authors"}')}}]);

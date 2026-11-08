@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://fastplaz.github.io/en/blog</id>
+    <title>FastPlaz Blog</title>
+    <updated>2026-11-07T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://fastplaz.github.io/en/blog"/>
+    <subtitle>FastPlaz Blog</subtitle>
+    <icon>https://fastplaz.github.io/en/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Release: Hero 2026]]></title>
+        <id>https://fastplaz.github.io/en/blog/2026/11/07/release-hero-2026</id>
+        <link href="https://fastplaz.github.io/en/blog/2026/11/07/release-hero-2026"/>
+        <updated>2026-11-07T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[FastPlaz Hero 2026]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" alt="FastPlaz Hero 2026" src="https://fastplaz.github.io/en/assets/images/2026-hero-56df92fbb4134319b2edacb8aea057b0.png" width="2400" height="1020" class="img_ev3q"></p>
+<p>The 2026 FastPlaz release, code name <strong>"Hero"</strong>, brings two major features: the same application can run as a <strong>standalone HTTP server</strong> or as <strong>CGI</strong>, and <strong>AI Agent Plane</strong>, a coding agent right inside the Lazarus IDE.</p>
+<p>This release is also the result of a thorough review of every unit in <code>FastPlaz/src</code> and <code>tools/src</code>: about 170 commits, 365 files, +51,000 / −11,900 lines, with unit tests for every library.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="headline">Headline<a href="https://fastplaz.github.io/en/blog/2026/11/07/release-hero-2026#headline" class="hash-link" aria-label="Direct link to Headline" title="Direct link to Headline" translate="no">​</a></h2>
+<ol>
+<li class=""><strong>One binary, two modes: Standalone HTTP and CGI.</strong> A FastPlaz application can run as its own web server or still as CGI under Apache/nginx, with no code changes. <a class="" href="https://fastplaz.github.io/en/docs/standalone">Read more</a></li>
+<li class=""><strong>AI Agent Plane.</strong> Claude Code, OpenCode, Pi, GitHub Copilot CLI, and other ACP agents right inside the Lazarus IDE, complete with an MCP server that can open files, edit, <em>compile</em>, and create FastPlaz controllers/models. <a class="" href="https://fastplaz.github.io/en/docs/ai-agent-plane">Read more</a></li>
+<li class=""><strong>Thorough review and fixes.</strong> Memory leaks, double frees, security holes, and long-standing bugs have been fixed.</li>
+<li class=""><strong>More secure by default.</strong> Per-form CSRF, HttpOnly/SameSite/Secure session cookies, CSPRNG, XXE protection, <em>quoted</em> SQL, header injection closed.</li>
+<li class=""><strong>Cross-platform, actually tested.</strong> More than 700 FPCUnit unit tests, run on Windows and Linux.</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="new-features">New Features<a href="https://fastplaz.github.io/en/blog/2026/11/07/release-hero-2026#new-features" class="hash-link" aria-label="Direct link to New Features" title="Direct link to New Features" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="standalone-http-mode">Standalone HTTP mode<a href="https://fastplaz.github.io/en/blog/2026/11/07/release-hero-2026#standalone-http-mode" class="hash-link" aria-label="Direct link to Standalone HTTP mode" title="Direct link to Standalone HTTP mode" translate="no">​</a></h3>
+<ul>
+<li class="">The new <code>fastplaz_app</code> unit replaces <code>fpcgi</code>. The mode is selected automatically: <code>--mode=cgi|http</code>, the <code>GATEWAY_INTERFACE</code> variable, or <code>systems/server/mode</code> in <code>config.json</code>.</li>
+<li class="">Default <code>http://127.0.0.1:17845</code>.</li>
+<li class="">Graceful shutdown (Ctrl+C / SIGTERM), <code>max_requests</code>, per-request database connections.</li>
+<li class=""><code>X-Forwarded-*</code> support behind a trusted reverse proxy.</li>
+<li class="">The project wizards (Simple, API, Full Package) have an HTTP/CGI Run Mode option.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ai-agent-plane">AI Agent Plane<a href="https://fastplaz.github.io/en/blog/2026/11/07/release-hero-2026#ai-agent-plane" class="hash-link" aria-label="Direct link to AI Agent Plane" title="Direct link to AI Agent Plane" translate="no">​</a></h3>
+<ul>
+<li class="">A <em>dockable</em> chat window under the <strong>FastPlaz → Agent Plane</strong> menu: markdown answers, code blocks with syntax highlighting, permission cards, and question cards.</li>
+<li class="">Switch runtime, model, and effort right from the chat.</li>
+<li class="">Files changed by the agent are automatically reloaded in the editor.</li>
+<li class="">Built-in MCP server (<code>127.0.0.1:17826</code>) with <a class="" href="https://fastplaz.github.io/en/docs/ai-agent-plane-mcp">19 tools</a>: editor, search, <em>compile</em> and build, controller/model generators, and FastPlaz reference for the agent.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="library">Library<a href="https://fastplaz.github.io/en/blog/2026/11/07/release-hero-2026#library" class="hash-link" aria-label="Direct link to Library" title="Direct link to Library" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Built-in SMTP client</strong> (<code>smtp_lib</code>): <code>TMailer</code> can send email without Synapse.</li>
+<li class=""><strong>Database</strong>: <code>ExecScript</code> / <code>ExecSQLScript</code>, <code>QuoteIdentifier</code>, <code>QuoteValue</code>, and a <code>SoftDelete</code> that actually works.</li>
+<li class=""><strong>Theme</strong>: <code>escape</code> filter, rewritten <code>[if]</code> (comparison operators, nesting), nested <code>[foreach]</code>.</li>
+<li class=""><strong>Session</strong>: <code>RegenerateID</code>, HttpOnly/SameSite/Secure cookies.</li>
+<li class=""><strong>Redis</strong>: IPv6, full RESP parsing, connect timeout.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ide-tools">IDE Tools<a href="https://fastplaz.github.io/en/blog/2026/11/07/release-hero-2026#ide-tools" class="hash-link" aria-label="Direct link to IDE Tools" title="Direct link to IDE Tools" translate="no">​</a></h3>
+<ul>
+<li class="">Fast Code supports OpenAI-compatible servers.</li>
+<li class="">Database Explorer: MySQL 8.0 by default, icon toolbar, automatic column width.</li>
+<li class=""><strong>FastPlaz → Open Console/Terminal</strong> menu and keyboard shortcuts for the FastPlaz menu.</li>
+<li class="">Indonesian translation for the IDE tools.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="before-upgrading">Before Upgrading<a href="https://fastplaz.github.io/en/blog/2026/11/07/release-hero-2026#before-upgrading" class="hash-link" aria-label="Direct link to Before Upgrading" title="Direct link to Before Upgrading" translate="no">​</a></h2>
+<p>Some fixes may change the behavior of existing applications, for example <code>Redirect</code>/<code>die</code> no longer exit the method, session timeout is in minutes, and <code>Save</code>/<code>Delete</code> return <code>False</code>. Read <a class="" href="https://fastplaz.github.io/en/docs/upgrade">Upgrading to the 2026 Release</a> first.</p>
+<p>Repository: <a href="https://github.com/fastplaz/fastplaz" target="_blank" rel="noopener noreferrer" class="">github.com/fastplaz/fastplaz</a> · Full brief: <a href="https://github.com/fastplaz/fastplaz/blob/development/docs/RELEASE-2026-Hero.md" target="_blank" rel="noopener noreferrer" class="">RELEASE-2026-Hero.md</a></p>]]></content>
+        <author>
+            <name>Luri Darmawan</name>
+            <uri>https://github.com/luridarmawan</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Release: Super Mom v0.12.22]]></title>
+        <id>https://fastplaz.github.io/en/blog/2020/12/22/release-supermom-v0.12.22</id>
+        <link href="https://fastplaz.github.io/en/blog/2020/12/22/release-supermom-v0.12.22"/>
+        <updated>2020-12-22T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[New Features]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="new-features">New Features<a href="https://fastplaz.github.io/en/blog/2020/12/22/release-supermom-v0.12.22#new-features" class="hash-link" aria-label="Direct link to New Features" title="Direct link to New Features" translate="no">​</a></h3>
+<ul>
+<li class="">Database Explorer</li>
+<li class="">Reveal File in Explorer/Finder</li>
+<li class="">JSON Visualization (TreeView)</li>
+<li class="">Regex Tester</li>
+<li class="">Full Package Example</li>
+</ul>
+<p>Repository available at <a href="https://github.com/fastplaz/fastplaz" target="_blank" rel="noopener noreferrer" class="">https://github.com/fastplaz/fastplaz</a></p>]]></content>
+        <author>
+            <name>Luri Darmawan</name>
+            <uri>https://github.com/luridarmawan</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Release: Hero v0.11.10]]></title>
+        <id>https://fastplaz.github.io/en/blog/2020/11/10/release-hero-v0.11.10</id>
+        <link href="https://fastplaz.github.io/en/blog/2020/11/10/release-hero-v0.11.10"/>
+        <updated>2020-11-10T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[FastPlaz Hero]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" alt="FastPlaz Hero" src="https://fastplaz.github.io/en/assets/images/20201110-hero-50266d306d4725ce15c55a6b743e4075.jpg" width="1612" height="910" class="img_ev3q"></p>
+<p>After waiting more than 5 years, FastPlaz has finally been released to master, with the code name:</p>
+<p>Repository available at <a href="https://github.com/fastplaz/fastplaz" target="_blank" rel="noopener noreferrer" class="">https://github.com/fastplaz/fastplaz</a></p>]]></content>
+        <author>
+            <name>Luri Darmawan</name>
+            <uri>https://github.com/luridarmawan</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Release: Merdeka v0.0.0]]></title>
+        <id>https://fastplaz.github.io/en/blog/2015/08/17/release-merdeka-v0.0.0</id>
+        <link href="https://fastplaz.github.io/en/blog/2015/08/17/release-merdeka-v0.0.0"/>
+        <updated>2015-08-17T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Features]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="features">Features<a href="https://fastplaz.github.io/en/blog/2015/08/17/release-merdeka-v0.0.0#features" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features" translate="no">​</a></h3>
+<ul>
+<li class="">Redis support</li>
+<li class="">Themes generator</li>
+<li class="">Tagstrings</li>
+<li class="">Add html block tag</li>
+<li class="">Add permalink support @theme</li>
+<li class="">Prepare fastplaz integration package</li>
+</ul>
+<p>Repository available at <a href="https://github.com/fastplaz/fastplaz" target="_blank" rel="noopener noreferrer" class="">https://github.com/fastplaz/fastplaz</a></p>]]></content>
+        <author>
+            <name>Luri Darmawan</name>
+            <uri>https://github.com/luridarmawan</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Release: Ibu v0.0.0]]></title>
+        <id>https://fastplaz.github.io/en/blog/2014/12/22/release-ibu-v0.0.0</id>
+        <link href="https://fastplaz.github.io/en/blog/2014/12/22/release-ibu-v0.0.0"/>
+        <updated>2014-12-22T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Release Ibu v0.0.0]]></summary>
+        <content type="html"><![CDATA[<p><a href="https://github.com/fastplaz/fastplaz/releases" target="_blank" rel="noopener noreferrer" class="">Release Ibu v0.0.0</a></p>]]></content>
+        <author>
+            <name>Luri Darmawan</name>
+            <uri>https://github.com/luridarmawan</uri>
+        </author>
+    </entry>
+</feed>
