@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
+import Translate, {translate} from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
@@ -8,16 +9,18 @@ import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
 
+// Default text is Bahasa Indonesia; English lives in i18n/en/code.json.
 const features = [
   {
     title: 'MVC',
     link: '/docs/architecture',
     image: 'img/home/mvc.png',
     description: (
-      <>
-        Dengan metode MVC <em>(model-view-controller)</em> akan memudahkan
-        developer dalam mengembangkan aplikasi.
-      </>
+      <Translate
+        id="homepage.features.mvc"
+        values={{term: <em>(model-view-controller)</em>}}>
+        {'Dengan metode MVC {term} akan memudahkan developer dalam mengembangkan aplikasi.'}
+      </Translate>
     ),
   },
   {
@@ -25,20 +28,22 @@ const features = [
     link: '/docs/orm',
     image: 'img/home/orm.png',
     description: (
-      <>
-        Akses database dengan mudah menggunakan Model ORM{' '}
-        <em>(Object Relationship Mapping)</em>.
-      </>
+      <Translate
+        id="homepage.features.orm"
+        values={{term: <em>(Object Relationship Mapping)</em>}}>
+        {'Akses database dengan mudah menggunakan Model ORM {term}.'}
+      </Translate>
     ),
   },
   {
-    title: 'Multi Platform',
-    image: 'img/home/multi.png',
+    title: 'Standalone & CGI',
+    link: '/docs/standalone',
+    image: 'img/home/standalone.svg',
     description: (
-      <>
-        Mudah didistribusikan ke berbagai platform, termasuk untuk shared
-        hosting cPanel dan juga Serverless.
-      </>
+      <Translate id="homepage.features.standalone">
+        Satu binary native: jalan sebagai HTTP server sendiri atau sebagai CGI
+        di shared hosting cPanel, di Windows, Linux, dan macOS.
+      </Translate>
     ),
   },
   {
@@ -46,9 +51,11 @@ const features = [
     link: '/docs/fte',
     image: 'img/home/fte.png',
     description: (
-      <>
-        <em>Template Engine</em> yang simple akan makin membuat menarik hati.
-      </>
+      <Translate
+        id="homepage.features.fte"
+        values={{term: <em>Template Engine</em>}}>
+        {'{term} yang simple akan makin membuat menarik hati.'}
+      </Translate>
     ),
   },
 ];
@@ -66,17 +73,23 @@ function HomeSplash() {
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className="hero__subtitle">
+          <Translate id="homepage.tagline">
+            Aplikasi web native yang cepat, dengan Free Pascal.
+          </Translate>
+        </p>
         <div className={styles.buttons}>
-          <a className="button button--secondary button--lg" href="#featured">
-            Featured
-          </a>
-          <a className="button button--secondary button--lg" href="#themeTemplate">
-            Template Engine
-          </a>
-          <Link className="button button--secondary button--lg" to="/docs/orm">
-            ORM
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/introduction">
+            <Translate id="homepage.hero.start">Mulai</Translate>
           </Link>
+          <a className="button button--secondary button--lg" href="#agentPlane">
+            AI Agent Plane
+          </a>
+          <a className="button button--secondary button--lg" href="#featured">
+            <Translate id="homepage.hero.featured">Fitur</Translate>
+          </a>
         </div>
       </div>
     </header>
@@ -107,26 +120,88 @@ function Features() {
   );
 }
 
+function AgentPlane() {
+  return (
+    <section id="agentPlane" className={styles.section}>
+      <div className="container">
+        <div className="row row--align-center">
+          <div className="col col--5">
+            <span className="badge badge--primary margin-bottom--sm">
+              <Translate id="homepage.agentPlane.badge">Baru di rilis 2026</Translate>
+            </span>
+            <Heading as="h2">AI Agent Plane</Heading>
+            <p>
+              <Translate id="homepage.agentPlane.p1">
+                Chat dengan coding agent langsung di Lazarus IDE: Claude Code,
+                OpenCode, Pi, GitHub Copilot CLI, dan agent ACP lainnya.
+              </Translate>
+            </p>
+            <p>
+              <Translate id="homepage.agentPlane.p2">
+                Lewat MCP server bawaan, agent bisa membuka unit di baris yang
+                tepat, membaca editor, meng-compile project dan memperbaiki
+                error-nya, serta membuat controller dan model FastPlaz. Setiap
+                perubahan tetap menunggu persetujuan Anda.
+              </Translate>
+            </p>
+            <div className={styles.inlineButtons}>
+              <Link className="button button--primary" to="/docs/ai-agent-plane">
+                <Translate id="homepage.agentPlane.learn">
+                  Pelajari AI Agent Plane
+                </Translate>
+              </Link>
+              <Link
+                className="button button--outline button--primary"
+                to="/docs/ai-agent-plane-mcp">
+                MCP Tools
+              </Link>
+            </div>
+          </div>
+          <div className="col col--7">
+            <img
+              className={styles.screenshot}
+              src={useBaseUrl('img/agent-plane/editor-chat.png')}
+              alt={translate({
+                id: 'homepage.agentPlane.imgAlt',
+                message: 'AI Agent Plane: editor Lazarus dengan chat AI agent',
+              })}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ThemeTemplate() {
   return (
     <section id="themeTemplate" className={clsx(styles.section, styles.light)}>
       <div className="container">
         <div className="row row--align-center">
           <div className="col col--6">
-            <Heading as="h2">Featured Theme Template</Heading>
+            <Heading as="h2">
+              <Translate id="homepage.theme.title">Theme Template Siap Pakai</Translate>
+            </Heading>
             <p>
-              Each new FastPlaz project has <strong>featured</strong> theme
-              template.
-              <br />
-              <Link to="/docs/fte">FastPlaz Theme Engine</Link> will make the
-              world happy.
+              <Translate
+                id="homepage.theme.body"
+                values={{
+                  featured: (
+                    <strong>
+                      <Translate id="homepage.theme.featured">siap pakai</Translate>
+                    </strong>
+                  ),
+                  fte: <Link to="/docs/fte">FastPlaz Theme Engine</Link>,
+                }}>
+                {'Setiap project FastPlaz baru sudah dilengkapi theme template {featured}. {fte} akan membuat tampilan aplikasi lebih mudah diatur.'}
+              </Translate>
             </p>
           </div>
           <div className="col col--6">
             <img
               className={styles.sectionImage}
               src={useBaseUrl('img/undraw_youtube_tutorial.svg')}
-              alt="Featured Theme Template"
+              alt="Theme Template"
             />
           </div>
         </div>
@@ -139,8 +214,15 @@ function Showcase() {
   return (
     <section className={clsx(styles.section, 'text--center')}>
       <div className="container">
-        <Heading as="h2">Who is Using This?</Heading>
-        <p>This project is used by all these people</p>
+        <Heading as="h2">
+          <Translate id="homepage.showcase.title">Siapa yang Menggunakan?</Translate>
+        </Heading>
+        <p>
+          <Translate id="homepage.showcase.body">
+            FastPlaz dipakai di berbagai project, dari bot percakapan sampai
+            dashboard.
+          </Translate>
+        </p>
         <Link to="/docs/showcase">
           <img
             className={styles.showcaseLogo}
@@ -151,7 +233,7 @@ function Showcase() {
         </Link>
         <div>
           <Link className="button button--primary" to="/users">
-            More FastPlaz Users
+            <Translate id="homepage.showcase.more">Pengguna FastPlaz Lainnya</Translate>
           </Link>
         </div>
       </div>
@@ -160,12 +242,21 @@ function Showcase() {
 }
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
   return (
-    <Layout title={siteConfig.tagline} description="Dokumentasi FastPlaz Web Framework">
+    <Layout
+      title={translate({
+        id: 'homepage.title',
+        message: 'Aplikasi web native yang cepat, dengan Free Pascal',
+      })}
+      description={translate({
+        id: 'homepage.description',
+        message:
+          'Dokumentasi FastPlaz, web framework untuk Free Pascal: standalone HTTP & CGI, ORM, template engine, dan AI Agent Plane untuk Lazarus IDE.',
+      })}>
       <HomeSplash />
       <main>
         <Features />
+        <AgentPlane />
         <ThemeTemplate />
         <Showcase />
       </main>

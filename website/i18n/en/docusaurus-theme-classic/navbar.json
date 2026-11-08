@@ -1,0 +1,42 @@
+{
+  "title": {
+    "message": "FastPlaz",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "FastPlaz",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Docs": {
+    "message": "Docs",
+    "description": "Navbar item with label Docs"
+  },
+  "item.label.MVC": {
+    "message": "MVC",
+    "description": "Navbar item with label MVC"
+  },
+  "item.label.ORM": {
+    "message": "ORM",
+    "description": "Navbar item with label ORM"
+  },
+  "item.label.FTE": {
+    "message": "FTE",
+    "description": "Navbar item with label FTE"
+  },
+  "item.label.Agent Plane": {
+    "message": "Agent Plane",
+    "description": "Navbar item with label Agent Plane"
+  },
+  "item.label.Help": {
+    "message": "Help",
+    "description": "Navbar item with label Help"
+  },
+  "item.label.Release": {
+    "message": "Release",
+    "description": "Navbar item with label Release"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

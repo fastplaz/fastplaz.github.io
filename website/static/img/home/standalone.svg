@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-label="Standalone &amp; CGI">
+  <circle cx="110" cy="110" r="108" fill="#5476e0"/>
+  <g fill="#fff">
+    <!-- two stacked server units -->
+    <rect x="58" y="62" width="104" height="38" rx="7"/>
+    <rect x="58" y="112" width="104" height="38" rx="7"/>
+  </g>
+  <g fill="#5476e0">
+    <circle cx="76" cy="81" r="6"/>
+    <circle cx="76" cy="131" r="6"/>
+    <rect x="96" y="77" width="50" height="8" rx="4"/>
+    <rect x="96" y="127" width="50" height="8" rx="4"/>
+  </g>
+  <!-- network line -->
+  <rect x="106" y="150" width="8" height="16" fill="#fff"/>
+  <rect x="74" y="166" width="72" height="8" rx="4" fill="#fff"/>
+</svg>

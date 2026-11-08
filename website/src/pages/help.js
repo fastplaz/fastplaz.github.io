@@ -1,47 +1,79 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
+import Translate, {translate} from '@docusaurus/Translate';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 
 const supportLinks = [
   {
-    title: 'Browse Docs',
+    key: 'docs',
+    title: <Translate id="help.docs.title">Baca Dokumentasi</Translate>,
     content: (
-      <>
-        Learn more using the{' '}
-        <Link to="/docs/introduction">documentation on this site.</Link>
-      </>
+      <Translate
+        id="help.docs.body"
+        values={{
+          link: (
+            <Link to="/docs/introduction">
+              <Translate id="help.docs.link">dokumentasi di situs ini</Translate>
+            </Link>
+          ),
+        }}>
+        {'Pelajari lebih lanjut lewat {link}.'}
+      </Translate>
     ),
   },
   {
-    title: 'Join the community',
+    key: 'community',
+    title: <Translate id="help.community.title">Gabung Komunitas</Translate>,
     content: (
-      <>
-        Ask questions about the documentation and project on{' '}
-        <Link href="https://t.me/pascalid">Pascal Indonesia Telegram</Link>.
-      </>
+      <Translate
+        id="help.community.body"
+        values={{
+          link: <Link href="https://t.me/pascalid">Pascal Indonesia Telegram</Link>,
+        }}>
+        {'Tanyakan seputar dokumentasi dan project di {link}.'}
+      </Translate>
     ),
   },
   {
-    title: 'Stay up to date',
+    key: 'news',
+    title: <Translate id="help.news.title">Ikuti Perkembangan</Translate>,
     content: (
-      <>
-        Find out what&apos;s new with this project on the{' '}
-        <Link to="/blog">release notes</Link>.
-      </>
+      <Translate
+        id="help.news.body"
+        values={{
+          link: (
+            <Link to="/blog">
+              <Translate id="help.news.link">catatan rilis</Translate>
+            </Link>
+          ),
+        }}>
+        {'Lihat apa yang baru di project ini pada {link}.'}
+      </Translate>
     ),
   },
 ];
 
 export default function Help() {
   return (
-    <Layout title="Help" description="Need help with FastPlaz?">
+    <Layout
+      title={translate({id: 'help.pageTitle', message: 'Bantuan'})}
+      description={translate({
+        id: 'help.pageDescription',
+        message: 'Butuh bantuan dengan FastPlaz?',
+      })}>
       <main className="container margin-vert--xl">
-        <Heading as="h1">Need help?</Heading>
-        <p>This project is maintained by a dedicated group of people.</p>
+        <Heading as="h1">
+          <Translate id="help.heading">Butuh bantuan?</Translate>
+        </Heading>
+        <p>
+          <Translate id="help.intro">
+            Project ini dikelola oleh sekelompok orang yang berdedikasi.
+          </Translate>
+        </p>
         <div className="row">
-          {supportLinks.map(({title, content}) => (
-            <div key={title} className="col col--4 margin-bottom--lg">
+          {supportLinks.map(({key, title, content}) => (
+            <div key={key} className="col col--4 margin-bottom--lg">
               <Heading as="h2">{title}</Heading>
               <p>{content}</p>
             </div>

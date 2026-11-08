@@ -37,6 +37,25 @@ $ docker compose up --build
 | `website/static/` | Gambar dan file statis |
 | `website/docusaurus.config.js` | Konfigurasi situs |
 
+### Multi Bahasa (Indonesia / English)
+
+Bahasa Indonesia adalah bahasa utama (URL tanpa prefix, misalnya `/docs/orm`). Versi English ada di bawah `/en/` (misalnya `/en/docs/orm`).
+
+| Path | Isi |
+|---|---|
+| `website/i18n/en/docusaurus-plugin-content-docs/current/` | Terjemahan English halaman dokumentasi (nama file sama dengan di `website-docs/`) |
+| `website/i18n/en/docusaurus-plugin-content-blog/` | Terjemahan English posting blog |
+| `website/i18n/en/code.json` | Teks halaman custom (beranda, help, users) |
+| `website/i18n/en/docusaurus-theme-classic/` | Label navbar dan footer |
+| `website/i18n/en/docusaurus-plugin-content-docs/current.json` | Nama kategori sidebar |
+
+Saat menambah atau mengubah halaman di `website-docs/`, perbarui juga file terjemahannya. Halaman yang belum diterjemahkan tetap tampil di `/en/` dengan isi bahasa Indonesia.
+
+```bash
+$ npm start -- --locale en        # preview versi English
+$ npm run write-translations -- --locale en   # tambahkan teks baru ke file JSON terjemahan
+```
+
 ### Build & Deploy
 
 ```bash
