@@ -115,3 +115,8 @@ File konfigurasi terletak di file `config/config.json`, dengan struktur sebagai 
   }
 }
 ```
+
+Catatan:
+
+- `session_timeout` dihitung dalam **menit**. Lihat [Upgrade ke Rilis 2026](/docs/upgrade#session-timeout-dalam-menit).
+- Untuk menjalankan aplikasi sebagai HTTP server standalone (port, `max_requests`, koneksi database, `trust_proxy`), tambahkan bagian `systems/server`. Lihat [Standalone HTTP & CGI](/docs/standalone#konfigurasi).

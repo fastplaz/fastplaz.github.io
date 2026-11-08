@@ -6,7 +6,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Pengantar',
-      items: ['introduction', 'architecture', 'installation'],
+      items: ['introduction', 'architecture', 'installation', 'upgrade'],
     },
     {
       type: 'category',
@@ -16,7 +16,18 @@ const sidebars = {
     {
       type: 'category',
       label: 'Penggunaan',
-      items: ['usage', 'usage-controller', 'usage-model', 'usage-routing'],
+      items: [
+        'usage',
+        'usage-controller',
+        'usage-model',
+        'usage-routing',
+        'standalone',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'AI Agent Plane',
+      items: ['ai-agent-plane', 'ai-agent-plane-mcp'],
     },
     {
       type: 'category',

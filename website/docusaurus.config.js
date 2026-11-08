@@ -6,7 +6,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'FastPlaz',
-  tagline: 'FastPlaz Documentation Site',
+  tagline: 'Aplikasi web native yang cepat, dengan Free Pascal.',
   favicon: 'img/favicon.ico',
 
   url: 'https://fastplaz.github.io',
@@ -83,6 +83,7 @@ const config = {
           {type: 'doc', docId: 'architecture', label: 'MVC', position: 'left'},
           {type: 'doc', docId: 'orm', label: 'ORM', position: 'left'},
           {type: 'doc', docId: 'fte', label: 'FTE', position: 'left'},
+          {type: 'doc', docId: 'ai-agent-plane', label: 'Agent Plane', position: 'left'},
           {to: '/help', label: 'Help', position: 'left'},
           {to: '/blog', label: 'Release', position: 'left'},
           {
@@ -106,6 +107,8 @@ const config = {
             items: [
               {label: 'Getting Started', to: '/docs/introduction'},
               {label: 'FastPlaz Theme Engine', to: '/docs/fte'},
+              {label: 'AI Agent Plane', to: '/docs/ai-agent-plane'},
+              {label: 'Standalone HTTP & CGI', to: '/docs/standalone'},
               {label: 'Contribution', to: '/help'},
             ],
           },
@@ -113,7 +116,7 @@ const config = {
             title: 'Community',
             items: [
               {label: 'User Showcase', to: '/docs/showcase'},
-              {label: 'Pascal Indonesia', href: 'https://pascal-id.org'},
+              {label: 'Komunitas Pascal Indonesia', href: 'https://pascal-dev.org'},
               {label: 'Pascal Indonesia on Telegram', href: 'https://t.me/pascalid'},
             ],
           },
@@ -121,6 +124,7 @@ const config = {
             title: 'More',
             items: [
               {label: 'Blog', to: '/blog'},
+              {label: 'fastplaz.com', href: 'https://www.fastplaz.com'},
               {label: 'GitHub', href: 'https://github.com/fastplaz'},
             ],
           },

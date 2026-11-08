@@ -32,12 +32,13 @@ const features = [
     ),
   },
   {
-    title: 'Multi Platform',
-    image: 'img/home/multi.png',
+    title: 'Standalone & CGI',
+    link: '/docs/standalone',
+    image: 'img/home/standalone.svg',
     description: (
       <>
-        Mudah didistribusikan ke berbagai platform, termasuk untuk shared
-        hosting cPanel dan juga Serverless.
+        Satu binary native: jalan sebagai HTTP server sendiri atau sebagai CGI
+        di shared hosting cPanel, di Windows, Linux, dan macOS.
       </>
     ),
   },
@@ -68,15 +69,17 @@ function HomeSplash() {
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/introduction">
+            Mulai
+          </Link>
+          <a className="button button--secondary button--lg" href="#agentPlane">
+            AI Agent Plane
+          </a>
           <a className="button button--secondary button--lg" href="#featured">
             Featured
           </a>
-          <a className="button button--secondary button--lg" href="#themeTemplate">
-            Template Engine
-          </a>
-          <Link className="button button--secondary button--lg" to="/docs/orm">
-            ORM
-          </Link>
         </div>
       </div>
     </header>
@@ -101,6 +104,48 @@ function Features() {
           {features.map((props) => (
             <Feature key={props.title} {...props} />
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AgentPlane() {
+  return (
+    <section id="agentPlane" className={styles.section}>
+      <div className="container">
+        <div className="row row--align-center">
+          <div className="col col--5">
+            <span className="badge badge--primary margin-bottom--sm">
+              Baru di rilis 2026
+            </span>
+            <Heading as="h2">AI Agent Plane</Heading>
+            <p>
+              Chat dengan coding agent langsung di Lazarus IDE: Claude Code,
+              OpenCode, Pi, GitHub Copilot CLI, dan agent ACP lainnya.
+            </p>
+            <p>
+              Lewat MCP server bawaan, agent bisa membuka unit di baris yang
+              tepat, membaca editor, meng-<em>compile</em> project dan
+              memperbaiki error-nya, serta membuat controller dan model
+              FastPlaz. Setiap perubahan tetap menunggu persetujuan Anda.
+            </p>
+            <div className={styles.inlineButtons}>
+              <Link className="button button--primary" to="/docs/ai-agent-plane">
+                Pelajari AI Agent Plane
+              </Link>
+              <Link className="button button--outline button--primary" to="/docs/ai-agent-plane-mcp">
+                MCP Tools
+              </Link>
+            </div>
+          </div>
+          <div className="col col--7">
+            <img
+              className={styles.screenshot}
+              src={useBaseUrl('img/agent-plane/editor-chat.png')}
+              alt="AI Agent Plane: editor Lazarus dengan chat AI agent"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -162,10 +207,11 @@ function Showcase() {
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <Layout title={siteConfig.tagline} description="Dokumentasi FastPlaz Web Framework">
+    <Layout title={siteConfig.tagline} description="Dokumentasi FastPlaz, web framework untuk Free Pascal: standalone HTTP & CGI, ORM, template engine, dan AI Agent Plane untuk Lazarus IDE.">
       <HomeSplash />
       <main>
         <Features />
+        <AgentPlane />
         <ThemeTemplate />
         <Showcase />
       </main>
