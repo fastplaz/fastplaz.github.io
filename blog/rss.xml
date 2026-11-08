@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>FastPlaz Blog</title>
+        <link>https://fastplaz.github.io/blog</link>
+        <description>FastPlaz Blog</description>
+        <lastBuildDate>Tue, 22 Dec 2020 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>id</language>
+        <item>
+            <title><![CDATA[Release: Super Mom v0.12.22]]></title>
+            <link>https://fastplaz.github.io/blog/2020/12/22/release-supermom-v0.12.22</link>
+            <guid>https://fastplaz.github.io/blog/2020/12/22/release-supermom-v0.12.22</guid>
+            <pubDate>Tue, 22 Dec 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[New Features]]></description>
+            <content:encoded><![CDATA[<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="new-features">New Features<a href="https://fastplaz.github.io/blog/2020/12/22/release-supermom-v0.12.22#new-features" class="hash-link" aria-label="Taut langsung ke New Features" title="Taut langsung ke New Features" translate="no">​</a></h3>
+<ul>
+<li class="">Database Explorer</li>
+<li class="">Reveal File in Explorer/Finder</li>
+<li class="">JSON Visualization (TreeView)</li>
+<li class="">Regex Tester</li>
+<li class="">Full Package Example</li>
+</ul>
+<p>Repository tersedia di <a href="https://github.com/fastplaz/fastplaz" target="_blank" rel="noopener noreferrer" class="">https://github.com/fastplaz/fastplaz</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Release: Hero v0.11.10]]></title>
+            <link>https://fastplaz.github.io/blog/2020/11/10/release-hero-v0.11.10</link>
+            <guid>https://fastplaz.github.io/blog/2020/11/10/release-hero-v0.11.10</guid>
+            <pubDate>Tue, 10 Nov 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[FastPlaz Hero]]></description>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" alt="FastPlaz Hero" src="https://fastplaz.github.io/assets/images/20201110-hero-50266d306d4725ce15c55a6b743e4075.jpg" width="1612" height="910" class="img_ev3q"></p>
+<p>Setelah 5 tahun lebih menanti akhirnya FastPlaz rilis ke master, dengan kode:</p>
+<p>Repository tersedia di <a href="https://github.com/fastplaz/fastplaz" target="_blank" rel="noopener noreferrer" class="">https://github.com/fastplaz/fastplaz</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Release: Merdeka v0.0.0]]></title>
+            <link>https://fastplaz.github.io/blog/2015/08/17/release-merdeka-v0.0.0</link>
+            <guid>https://fastplaz.github.io/blog/2015/08/17/release-merdeka-v0.0.0</guid>
+            <pubDate>Mon, 17 Aug 2015 00:00:00 GMT</pubDate>
+            <description><![CDATA[Features]]></description>
+            <content:encoded><![CDATA[<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="features">Features<a href="https://fastplaz.github.io/blog/2015/08/17/release-merdeka-v0.0.0#features" class="hash-link" aria-label="Taut langsung ke Features" title="Taut langsung ke Features" translate="no">​</a></h3>
+<ul>
+<li class="">Redis support</li>
+<li class="">Themes generator</li>
+<li class="">Tagstrings</li>
+<li class="">Add html block tag</li>
+<li class="">Add permalink support @theme</li>
+<li class="">Prepare fastplaz integration package</li>
+</ul>
+<p>Repository tersedia di <a href="https://github.com/fastplaz/fastplaz" target="_blank" rel="noopener noreferrer" class="">https://github.com/fastplaz/fastplaz</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Release: Ibu v0.0.0]]></title>
+            <link>https://fastplaz.github.io/blog/2014/12/22/release-ibu-v0.0.0</link>
+            <guid>https://fastplaz.github.io/blog/2014/12/22/release-ibu-v0.0.0</guid>
+            <pubDate>Mon, 22 Dec 2014 00:00:00 GMT</pubDate>
+            <description><![CDATA[Release Ibu v0.0.0]]></description>
+            <content:encoded><![CDATA[<p><a href="https://github.com/fastplaz/fastplaz/releases" target="_blank" rel="noopener noreferrer" class="">Release Ibu v0.0.0</a></p>]]></content:encoded>
+        </item>
+    </channel>
+</rss>
