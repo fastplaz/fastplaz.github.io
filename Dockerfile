@@ -1,10 +1,11 @@
-FROM node:lts
+FROM node:22
 
 WORKDIR /app/website
 
-EXPOSE 3000 35729
-COPY ./docs /app/docs
+EXPOSE 3000
+COPY ./website/package.json ./website/package-lock.json /app/website/
+RUN npm ci
+COPY ./website-docs /app/website-docs
 COPY ./website /app/website
-RUN yarn install
 
-CMD ["yarn", "start"]
+CMD ["npm", "start", "--", "--host", "0.0.0.0"]

@@ -1,0 +1,64 @@
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.heroLogo {
+  max-width: 280px;
+  width: 60%;
+  margin-bottom: 1.5rem;
+}
+
+.heroLogo:hover,
+.featureImage:hover,
+.sectionImage:hover,
+.showcaseLogo:hover {
+  box-shadow: none;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.section {
+  padding: 3rem 0;
+}
+
+.light {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.feature {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.featureImage {
+  height: 128px;
+  width: auto;
+  margin-bottom: 1rem;
+}
+
+.sectionImage {
+  max-width: 100%;
+  max-height: 260px;
+  display: block;
+  margin: 0 auto;
+}
+
+.showcaseLogo {
+  max-height: 128px;
+  margin: 1rem 0 1.5rem;
+}

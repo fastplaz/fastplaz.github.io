@@ -37,7 +37,7 @@ Dari contoh ini bisa dipelajari tentang:
 - JSON, baik membaca data json maupun membuat output berformat json.
 - Membaca parameter melalui Method GET maupun POST.
 - Routing dengan _pattern regex_.
-- Database dengan [ORM](/docs/orm/) [Model](/docs/usage-model)
+- Database dengan [ORM](/docs/orm) [Model](/docs/usage-model)
 - Automation Test
 
 ## Referensi
