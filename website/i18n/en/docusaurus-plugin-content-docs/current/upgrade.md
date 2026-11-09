@@ -5,7 +5,7 @@ sidebar_label: Upgrading to the 2026 Release
 description: Behavior changes in the November 2026 release to check before upgrading.
 ---
 
-The [2026 "Hero" release](/blog/2026/11/11/release-hero-2026) fixes many bugs found in a full review of `FastPlaz/src` and `tools/src`. Most fixes are invisible to applications, but some of them **can change how an existing application behaves**. Check the list below before upgrading.
+The [2026 "Hero" release](/blog/2026/11/10/release-hero-2026) fixes many bugs found in a full review of `FastPlaz/src` and `tools/src`. Most fixes are invisible to applications, but some of them **can change how an existing application behaves**. Check the list below before upgrading.
 
 ## How to Upgrade
 

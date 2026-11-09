@@ -5,7 +5,7 @@ sidebar_label: Standalone & CGI
 description: Satu binary FastPlaz bisa berjalan sebagai HTTP server sendiri atau sebagai CGI, tanpa mengubah kode.
 ---
 
-Mulai [rilis 2026 "Hero"](/blog/2026/11/11/release-hero-2026), aplikasi FastPlaz yang sama bisa berjalan sebagai **HTTP server standalone** atau sebagai **CGI**. Mode dipilih saat aplikasi dijalankan, tanpa mengubah kode.
+Mulai [rilis 2026 "Hero"](/blog/2026/11/10/release-hero-2026), aplikasi FastPlaz yang sama bisa berjalan sebagai **HTTP server standalone** atau sebagai **CGI**. Mode dipilih saat aplikasi dijalankan, tanpa mengubah kode.
 
 - **CGI**: langsung dipasang di shared hosting (cPanel) atau Apache, seperti sebelumnya.
 - **Standalone**: jalankan di komputer sendiri tanpa web server, atau sebagai _service_ di belakang nginx/Apache.

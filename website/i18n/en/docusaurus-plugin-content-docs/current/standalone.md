@@ -5,7 +5,7 @@ sidebar_label: Standalone & CGI
 description: One FastPlaz binary can run as its own HTTP server or as CGI, without code changes.
 ---
 
-From the [2026 "Hero" release](/blog/2026/11/11/release-hero-2026), the same FastPlaz application can run as a **standalone HTTP server** or as **CGI**. The mode is chosen when the application starts, without changing code.
+From the [2026 "Hero" release](/blog/2026/11/10/release-hero-2026), the same FastPlaz application can run as a **standalone HTTP server** or as **CGI**. The mode is chosen when the application starts, without changing code.
 
 - **CGI**: deploy directly on shared hosting (cPanel) or Apache, as before.
 - **Standalone**: run it on your own computer without a web server, or as a service behind nginx/Apache.
