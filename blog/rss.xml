@@ -4,20 +4,20 @@
         <title>FastPlaz Blog</title>
         <link>https://fastplaz.github.io/blog</link>
         <description>FastPlaz Blog</description>
-        <lastBuildDate>Sat, 07 Nov 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 11 Nov 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>id</language>
         <item>
             <title><![CDATA[Release: Hero 2026]]></title>
-            <link>https://fastplaz.github.io/blog/2026/11/07/release-hero-2026</link>
-            <guid>https://fastplaz.github.io/blog/2026/11/07/release-hero-2026</guid>
-            <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
+            <link>https://fastplaz.github.io/blog/2026/11/11/release-hero-2026</link>
+            <guid>https://fastplaz.github.io/blog/2026/11/11/release-hero-2026</guid>
+            <pubDate>Wed, 11 Nov 2026 00:00:00 GMT</pubDate>
             <description><![CDATA[FastPlaz Hero 2026]]></description>
             <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" alt="FastPlaz Hero 2026" src="https://fastplaz.github.io/assets/images/2026-hero-56df92fbb4134319b2edacb8aea057b0.png" width="2400" height="1020" class="img_ev3q"></p>
 <p>FastPlaz rilis 2026 dengan kode <strong>"Hero"</strong> hadir dengan dua fitur besar: aplikasi yang sama bisa berjalan sebagai <strong>HTTP server standalone</strong> maupun <strong>CGI</strong>, dan <strong>AI Agent Plane</strong>, coding agent langsung di dalam Lazarus IDE.</p>
 <p>Rilis ini juga hasil review menyeluruh terhadap seluruh unit di <code>FastPlaz/src</code> dan <code>tools/src</code>: sekitar 170 commit, 365 file, +51.000 / −11.900 baris, dengan unit test untuk setiap library.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="headline">Headline<a href="https://fastplaz.github.io/blog/2026/11/07/release-hero-2026#headline" class="hash-link" aria-label="Taut langsung ke Headline" title="Taut langsung ke Headline" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="headline">Headline<a href="https://fastplaz.github.io/blog/2026/11/11/release-hero-2026#headline" class="hash-link" aria-label="Taut langsung ke Headline" title="Taut langsung ke Headline" translate="no">​</a></h2>
 <ol>
 <li class=""><strong>Satu binary, dua mode: Standalone HTTP dan CGI.</strong> Aplikasi FastPlaz bisa jalan sebagai web server sendiri atau tetap sebagai CGI di Apache/nginx, tanpa ganti kode. <a class="" href="https://fastplaz.github.io/docs/standalone">Selengkapnya</a></li>
 <li class=""><strong>AI Agent Plane.</strong> Claude Code, OpenCode, Pi, GitHub Copilot CLI, dan agent ACP lain langsung di dalam Lazarus IDE, lengkap dengan MCP server yang bisa membuka file, mengedit, <em>compile</em>, dan membuat controller/model FastPlaz. <a class="" href="https://fastplaz.github.io/docs/ai-agent-plane">Selengkapnya</a></li>
@@ -25,8 +25,8 @@
 <li class=""><strong>Lebih aman secara default.</strong> CSRF per form, cookie session HttpOnly/SameSite/Secure, CSPRNG, perlindungan XXE, SQL yang di-<em>quote</em>, header injection ditutup.</li>
 <li class=""><strong>Lintas platform yang benar-benar dites.</strong> Lebih dari 700 unit test FPCUnit, dijalankan di Windows dan Linux.</li>
 </ol>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="fitur-baru">Fitur Baru<a href="https://fastplaz.github.io/blog/2026/11/07/release-hero-2026#fitur-baru" class="hash-link" aria-label="Taut langsung ke Fitur Baru" title="Taut langsung ke Fitur Baru" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="standalone-http-mode">Standalone HTTP mode<a href="https://fastplaz.github.io/blog/2026/11/07/release-hero-2026#standalone-http-mode" class="hash-link" aria-label="Taut langsung ke Standalone HTTP mode" title="Taut langsung ke Standalone HTTP mode" translate="no">​</a></h3>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="fitur-baru">Fitur Baru<a href="https://fastplaz.github.io/blog/2026/11/11/release-hero-2026#fitur-baru" class="hash-link" aria-label="Taut langsung ke Fitur Baru" title="Taut langsung ke Fitur Baru" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="standalone-http-mode">Standalone HTTP mode<a href="https://fastplaz.github.io/blog/2026/11/11/release-hero-2026#standalone-http-mode" class="hash-link" aria-label="Taut langsung ke Standalone HTTP mode" title="Taut langsung ke Standalone HTTP mode" translate="no">​</a></h3>
 <ul>
 <li class="">Unit baru <code>fastplaz_app</code> menggantikan <code>fpcgi</code>. Mode dipilih otomatis: <code>--mode=cgi|http</code>, variabel <code>GATEWAY_INTERFACE</code>, atau <code>systems/server/mode</code> di <code>config.json</code>.</li>
 <li class="">Default <code>http://127.0.0.1:17845</code>.</li>
@@ -34,14 +34,14 @@
 <li class="">Dukungan <code>X-Forwarded-*</code> di belakang reverse proxy tepercaya.</li>
 <li class="">Wizard project (Simple, API, Full Package) punya pilihan Run Mode HTTP/CGI.</li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ai-agent-plane">AI Agent Plane<a href="https://fastplaz.github.io/blog/2026/11/07/release-hero-2026#ai-agent-plane" class="hash-link" aria-label="Taut langsung ke AI Agent Plane" title="Taut langsung ke AI Agent Plane" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ai-agent-plane">AI Agent Plane<a href="https://fastplaz.github.io/blog/2026/11/11/release-hero-2026#ai-agent-plane" class="hash-link" aria-label="Taut langsung ke AI Agent Plane" title="Taut langsung ke AI Agent Plane" translate="no">​</a></h3>
 <ul>
 <li class="">Jendela chat yang bisa di-<em>dock</em> di menu <strong>FastPlaz → Agent Plane</strong>: jawaban markdown, code block dengan syntax highlighting, permission card, dan kartu pertanyaan.</li>
 <li class="">Ganti runtime, model, dan effort langsung dari chat.</li>
 <li class="">File yang diubah agent otomatis dimuat ulang di editor.</li>
 <li class="">MCP server bawaan (<code>127.0.0.1:17826</code>) dengan <a class="" href="https://fastplaz.github.io/docs/ai-agent-plane-mcp">19 tool</a>: editor, pencarian, <em>compile</em> dan build, generator controller/model, serta referensi FastPlaz untuk agent.</li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="library">Library<a href="https://fastplaz.github.io/blog/2026/11/07/release-hero-2026#library" class="hash-link" aria-label="Taut langsung ke Library" title="Taut langsung ke Library" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="library">Library<a href="https://fastplaz.github.io/blog/2026/11/11/release-hero-2026#library" class="hash-link" aria-label="Taut langsung ke Library" title="Taut langsung ke Library" translate="no">​</a></h3>
 <ul>
 <li class=""><strong>SMTP client bawaan</strong> (<code>smtp_lib</code>): <code>TMailer</code> bisa mengirim email tanpa Synapse.</li>
 <li class=""><strong>Database</strong>: <code>ExecScript</code> / <code>ExecSQLScript</code>, <code>QuoteIdentifier</code>, <code>QuoteValue</code>, <code>SoftDelete</code> yang benar-benar berfungsi.</li>
@@ -49,14 +49,14 @@
 <li class=""><strong>Session</strong>: <code>RegenerateID</code>, cookie HttpOnly/SameSite/Secure.</li>
 <li class=""><strong>Redis</strong>: IPv6, parsing RESP lengkap, connect timeout.</li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ide-tools">IDE Tools<a href="https://fastplaz.github.io/blog/2026/11/07/release-hero-2026#ide-tools" class="hash-link" aria-label="Taut langsung ke IDE Tools" title="Taut langsung ke IDE Tools" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ide-tools">IDE Tools<a href="https://fastplaz.github.io/blog/2026/11/11/release-hero-2026#ide-tools" class="hash-link" aria-label="Taut langsung ke IDE Tools" title="Taut langsung ke IDE Tools" translate="no">​</a></h3>
 <ul>
 <li class="">Fast Code mendukung server yang kompatibel dengan OpenAI.</li>
 <li class="">Database Explorer: default MySQL 8.0, toolbar ikon, lebar kolom otomatis.</li>
 <li class="">Menu <strong>FastPlaz → Open Console/Terminal</strong> dan shortcut keyboard untuk menu FastPlaz.</li>
 <li class="">Terjemahan Bahasa Indonesia untuk IDE tools.</li>
 </ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="sebelum-upgrade">Sebelum Upgrade<a href="https://fastplaz.github.io/blog/2026/11/07/release-hero-2026#sebelum-upgrade" class="hash-link" aria-label="Taut langsung ke Sebelum Upgrade" title="Taut langsung ke Sebelum Upgrade" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="sebelum-upgrade">Sebelum Upgrade<a href="https://fastplaz.github.io/blog/2026/11/11/release-hero-2026#sebelum-upgrade" class="hash-link" aria-label="Taut langsung ke Sebelum Upgrade" title="Taut langsung ke Sebelum Upgrade" translate="no">​</a></h2>
 <p>Beberapa perbaikan bisa mengubah perilaku aplikasi yang sudah ada, misalnya <code>Redirect</code>/<code>die</code> yang tidak lagi keluar dari method, session timeout dalam menit, dan <code>Save</code>/<code>Delete</code> yang mengembalikan <code>False</code>. Baca <a class="" href="https://fastplaz.github.io/docs/upgrade">Upgrade ke Rilis 2026</a> terlebih dahulu.</p>
 <p>Repository: <a href="https://github.com/fastplaz/fastplaz" target="_blank" rel="noopener noreferrer" class="">github.com/fastplaz/fastplaz</a> · Brief lengkap: <a href="https://github.com/fastplaz/fastplaz/blob/development/docs/RELEASE-2026-Hero.md" target="_blank" rel="noopener noreferrer" class="">RELEASE-2026-Hero.md</a></p>]]></content:encoded>
         </item>
