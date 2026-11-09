@@ -5,7 +5,7 @@ sidebar_label: Upgrade ke Rilis 2026
 description: Perubahan perilaku pada rilis November 2026 yang perlu dicek sebelum upgrade.
 ---
 
-[Rilis 2026 "Hero"](/blog/2026/11/11/release-hero-2026) memperbaiki banyak bug yang ditemukan saat review menyeluruh terhadap `FastPlaz/src` dan `tools/src`. Sebagian besar perbaikan tidak terlihat dari sisi aplikasi, tapi beberapa di antaranya **bisa mengubah perilaku aplikasi yang sudah ada**. Cek daftar berikut sebelum upgrade.
+[Rilis 2026 "Hero"](/blog/2026/11/10/release-hero-2026) memperbaiki banyak bug yang ditemukan saat review menyeluruh terhadap `FastPlaz/src` dan `tools/src`. Sebagian besar perbaikan tidak terlihat dari sisi aplikasi, tapi beberapa di antaranya **bisa mengubah perilaku aplikasi yang sudah ada**. Cek daftar berikut sebelum upgrade.
 
 ## Cara Upgrade
 

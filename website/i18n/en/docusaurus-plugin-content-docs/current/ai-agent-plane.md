@@ -7,7 +7,7 @@ description: Coding agents (Claude Code, OpenCode, Pi, GitHub Copilot CLI) insid
 
 **AI Agent Plane** brings a coding agent right into the Lazarus IDE. You can chat with Claude Code, OpenCode, Pi, GitHub Copilot CLI, or another ACP agent in a dockable window. The agent does more than answer: it can **use the IDE itself**. It opens a unit at the right line, reads unsaved editor changes, compiles the project, reads the compiler errors and fixes them, and creates FastPlaz controllers and models.
 
-This feature is available from the [2026 "Hero" release](/blog/2026/11/11/release-hero-2026).
+This feature is available from the [2026 "Hero" release](/blog/2026/11/10/release-hero-2026).
 
 ![AI Agent Plane: the Lazarus editor with the AI agent chat](/img/agent-plane/editor-chat.png)
 
